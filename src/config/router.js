@@ -33,13 +33,13 @@ const AppRouter = () => {
       <NavBarHome />
       <Container token={token}>
         <Routes>
-          <Route exact path='' element={<Home />} />
-          <Route exact path='/login' element={<Login />} />
-          <Route exact path='/conditions-generales' element={<CGUPage />} />
-          <Route exact path='/politique-confidentialite' element={<PolitiqueConfidentialitePage />} />
-          <Route isLogged={false} exact path='/' element={<AuthRoute />}>
-            <Route exact path='/users' element={<Users />} />
-            <Route exact path='/tags' element={<Tags />} />
+          <Route path='' element={<Home />} />
+          <Route path='login' element={<Login />} />
+          <Route path='conditions-generales' element={<CGUPage />} />
+          <Route path='politique-confidentialite' element={<PolitiqueConfidentialitePage />} />
+          <Route isLogged={false} path='/' element={<AuthRoute />}>
+            <Route path='users' element={<Users />} />
+            <Route path='tags' element={<Tags />} />
           </Route>
         </Routes>
       </Container>
