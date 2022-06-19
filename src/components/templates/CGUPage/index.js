@@ -12,11 +12,11 @@ const GiantTitle = styled.h1`
 const SubGiantTitle = styled.h2`
   font-size: 30px;
   color: ${({ theme }) => get(theme, 'primary', '#FFF')};
-  padding-bottom: 15px;
+  padding: 15px;
 `
 
 const TextContent = styled.p`
-  padding-bottom: 15px;
+  padding: 15px;
 `
 
 const CGUPage = () => {

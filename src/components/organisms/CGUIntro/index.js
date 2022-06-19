@@ -29,6 +29,10 @@ const ButtonToCGU = styled.button`
 const CGUIntro = () => {
   const navigate = useNavigate()
   const goToCGU = () => {
+    return navigate('/conditions-generales')
+  }
+
+  const goToPolitiqueConfidentialite = () => {
     return navigate('/politique-confidentialite')
   }
 
@@ -36,7 +40,12 @@ const CGUIntro = () => {
     <FooterDiv>
       <ButtonToCGU onClick={goToCGU}>
         <TextStyled>
-          Mentions Légales
+          conditions generales d&apos;utilisation
+        </TextStyled>
+      </ButtonToCGU>
+      <ButtonToCGU onClick={goToPolitiqueConfidentialite}>
+        <TextStyled>
+          Politique de confidentialité
         </TextStyled>
       </ButtonToCGU>
     </FooterDiv>

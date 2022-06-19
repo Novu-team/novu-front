@@ -50,7 +50,7 @@ const ReviewIntro = () => {
           </SubGiantTitle>
         </div>
 
-        <RowImageDescription data={DATA} />
+        {/*<RowImageDescription data={DATA} />*/}
       </ReviewContainer>
 
     </>
