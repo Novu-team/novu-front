@@ -1,0 +1,29 @@
+{
+  "ERROR": {
+    "COMMON": {
+      "notFound": "Ressource introuvable",
+      "forbidden": "Accès interdit"
+    },
+    "LOGIN": {
+      "notFound": "Utilisateur inconnu",
+      "forbidden": "Mot de passe incorrect"
+    }
+  },
+  "COMMON": {
+    "city": "Ville",
+    "export": "Exporter",
+    "listTitle": "Liste",
+    "name": "Nom",
+    "password": "Mot de passe",
+    "register": "Créé le",
+    "status": "Statut",
+    "username": "Nom d'utilisateur",
+    "validate": "Valider",
+    "role": "Rôle"
+  },
+  "USERS": {
+    "delete": "Supprimer",
+    "role": "Rôle",
+    "title": "Comptes"
+  }
+}
