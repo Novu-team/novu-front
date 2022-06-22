@@ -2,10 +2,6 @@ import { get } from 'lodash'
 import { createGlobalStyle } from 'styled-components'
 import theme from './theme'
 
-import Helvetica from '../fonts/Helvetica.ttf'
-import HelveticaLight from '../fonts/Helvetica-light.ttf'
-import HelveticaWoff from './../fonts/helvetica.woff'
-
 const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;

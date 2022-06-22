@@ -55,7 +55,7 @@ const ExplanationNovuIntro = () => {
     <BackgroundNovuIntro>
       <TextContainerIntro>
         <GiantTitle>Novu</GiantTitle>
-        <SubGiantTitle>C est Helvetica ?</SubGiantTitle>
+        <SubGiantTitle>C est Quoi ?</SubGiantTitle>
         <LittleTextIntro>
           <TextExplanation>
             <BoldText>Novu</BoldText> c’est l’appli collaborative qui regroupe toutes les étapes de l’organisation de ton voyage, <BoldText>au même endroit.</BoldText>

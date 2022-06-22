@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import ItemsCarousel from 'react-items-carousel'
 import { Slider } from '@mui/material'
 import { styled as styledMaterialUi } from '@mui/system'
-import { get, map } from 'lodash'
+import { get, isEqual, map } from 'lodash'
 
 import HebergementPicture from '../../../assets/hebergement.jpg'
 import ValisesPicture from '../../../assets/Valises.jpg'
@@ -12,7 +12,7 @@ import DatePicture from '../../../assets/Dates.jpg'
 import CoursesPicture from '../../../assets/Courses.jpg'
 import ActivitesGif from '../../../assets/Activites.gif'
 import ParticipantsGif from '../../../assets/Participants.gif'
-
+import BackgroundCarousel from '../../molecules/BackgroundCarousel'
 
 const SliderContainer = styled.div`
   padding: 40px 40px;
@@ -21,26 +21,6 @@ const SliderContainer = styled.div`
   background-size: cover;
 `
 
-const BackgroundImage = styled.img`
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  position: relative;
-`
-
-const BottomSliderContainer = styled.div`
-  z-index: 1;
-  top: 25vh;
-  position: absolute;
-  align-items: center;
-  flex-direction: column;
-`
-
-const TitleSliderText = styled.h1`
-  color: white;
-`
 
 const SliderNovuImage = styledMaterialUi(Slider)({
   color: '#fff',
@@ -93,7 +73,7 @@ const MainTitleContainer = styled.div`
   padding-bottom: 40px;
 `
 
-const MainTitleText = styled.h1`
+const MainTitleText = styled.p`
   color: white;
   font-size: 30px;
   margin: auto;
@@ -146,6 +126,10 @@ const SliderIntro = () => {
     return setActiveItemIndex(e.target.value)
   }
 
+  const activateBlurEffect = (e) => {
+    console.log(e)
+  }
+
   return (
     <SliderContainer>
       <MainTitleContainer>
@@ -161,10 +145,7 @@ const SliderIntro = () => {
         gutter={20}>
         { map(sliderPictures, (item, key) => {
           return <div style={{ height: '50vh', background: '#EEE' }}>
-            <BottomSliderContainer>
-              <TitleSliderText>Test</TitleSliderText>
-            </BottomSliderContainer>
-            <BackgroundImage src={get(item, 'image')} />
+            <BackgroundCarousel item={item} onClick={(item) => activateBlurEffect(item)} />
           </div>
         })}
       </ItemsCarousel>
