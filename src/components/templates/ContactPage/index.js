@@ -24,12 +24,15 @@ const CircleContainer = styled.div`
 const CircleImage = styled.img`
 `
 
-const TitleName = styled.h1`
+const TitleName = styled.p`
+  font-weight: lighter;
+  font-size: 25px;
   padding: 20px;
 `
 
 const TextRole = styled.p`
-
+  font-style: italic;
+  font-weight: bold;
 `
 
 const ProfilContainer = styled.div`
