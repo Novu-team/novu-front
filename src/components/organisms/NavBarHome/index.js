@@ -20,8 +20,8 @@ const NAV = [{
   path: '/subscribe',
   label: 'Abonnements'
 }, {
-  id: '/statistics',
-  path: '/statistics',
+  id: '/contact',
+  path: '/contact',
   label: 'Contact'
 }]
 

@@ -8,7 +8,7 @@ const ErrorText = styled.p`
   color: ${props => get(props, 'theme.alert', '#CF0023FF')};
   font-size: 15px;
   font-weight: 600;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Helevitca';
 `
 
 const Error = ({ error, context }) => {

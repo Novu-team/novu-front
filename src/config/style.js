@@ -7,7 +7,7 @@ import HelveticaLight from '../fonts/Helvetica-light.ttf'
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
-    font-family: "helvetica";
+    font-family: "Helvetica";
     src: url("./../fonts/Helvetica.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   @font-face {
-    font-family: 'helvetica';
+    font-family: 'Helvetica';
     src: url('../fonts/Helvetica-Light.woff2') format('woff2');
     font-style: normal;
     font-display: swap;
@@ -38,13 +38,11 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     height: 100%;
+    font-family: "Helvetica", sans-serif;
   }
 
   body {
-    font-family: "helvetica";
-
     height: 100%;
-
     background-image: linear-gradient(#FCFDFF, #F3F7FF);
     background-repeat: no-repeat;
     color: ${get(theme, 'grey', '#000')};

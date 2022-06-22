@@ -16,8 +16,9 @@ import CGUPage from '../components/templates/CGUPage'
 import AuthRoute from '../components/molecules/AuthRoute'
 import userToken from '../redux/selectors/userToken'
 import NavBarHome from '../components/organisms/NavBarHome'
-
 import PolitiqueConfidentialitePage from '../components/templates/PolitiqueConfidentialitePage'
+import ContactPage from '../components/templates/ContactPage'
+import SubscribeOfferPage from '../components/templates/SubscribeOfferPage'
 
 const Container = styled.div`
   padding-top: calc(40px + 16px + 9px);
@@ -34,7 +35,10 @@ const AppRouter = () => {
       <Container token={token}>
         <Routes>
           <Route path='' element={<Home />} />
+          <Route path='mobileApp' element={<Home />} />
           <Route path='login' element={<Login />} />
+          <Route path='contact' element={<ContactPage />} />
+          <Route path='subscribe' element={<SubscribeOfferPage />} />
           <Route path='conditions-generales' element={<CGUPage />} />
           <Route path='politique-confidentialite' element={<PolitiqueConfidentialitePage />} />
           <Route isLogged={false} path='/' element={<AuthRoute />}>

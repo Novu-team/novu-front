@@ -4,6 +4,8 @@ import { get } from 'lodash'
 import { useNavigate } from 'react-router-dom'
 
 const FooterDiv = styled.div`
+  position: absolute;
+  bottom: 0;
   display: flex;
   height: 10%;
   width: 100%;

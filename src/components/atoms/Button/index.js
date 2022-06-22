@@ -6,7 +6,7 @@ import { get, keys } from 'lodash'
 import theme from '../../../config/theme'
 
 const StyledButton = styled.button`
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Helvetica', sans-serif;
   font-size: ${({ fontSize }) => fontSize}px;
   font-weight: 600;
   padding: 6px 40px;
