@@ -25,7 +25,7 @@ const CircleImage = styled.img`
 `
 
 const TitleName = styled.h1`
-
+  padding: 20px;
 `
 
 const TextRole = styled.p`
@@ -35,8 +35,17 @@ const TextRole = styled.p`
 const ProfilContainer = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: center;
+  align-items: center;
   justify-content: center;
+`
+
+const LinkContactEmail = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Helvetica;
+  font-weight: lighter;
+  font-size: 40px;
 `
 
 const ContactPage = () => {
@@ -65,7 +74,9 @@ const ContactPage = () => {
             Fondateur
           </TextRole>
         </ProfilContainer>
+
       </ContactContainer>
+      <LinkContactEmail>lorepipsum@novu-app.com</LinkContactEmail>
       <GCUIntro />
     </>
   )

@@ -7,10 +7,9 @@ const BackgroundImage = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  position: relative;
-  background-color: rgba(0,0,0,1)
+  background: rgba(0, 0, 0, 0.7) no-repeat center center;
+  //background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  background-size: cover;
   opacity: 0.5;
 `
 
