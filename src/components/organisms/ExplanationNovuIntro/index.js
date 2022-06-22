@@ -11,7 +11,7 @@ const GiantTitle = styled.h1`
 `
 
 const SubGiantTitle = styled.h2`
-  
+  font-family: Helvetica;
   font-size: 100px;
   color: white;
   text-align: center;
@@ -55,7 +55,7 @@ const ExplanationNovuIntro = () => {
     <BackgroundNovuIntro>
       <TextContainerIntro>
         <GiantTitle>Novu</GiantTitle>
-        <SubGiantTitle>C est quoi ?</SubGiantTitle>
+        <SubGiantTitle>C est Helvetica ?</SubGiantTitle>
         <LittleTextIntro>
           <TextExplanation>
             <BoldText>Novu</BoldText> c’est l’appli collaborative qui regroupe toutes les étapes de l’organisation de ton voyage, <BoldText>au même endroit.</BoldText>

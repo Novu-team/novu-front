@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { ThemeProvider } from 'styled-components'
 
-
 import theme from './config/theme'
 import Router from './config/router'
 import createStore from './redux/store'
@@ -12,6 +11,8 @@ import reportWebVitals from './reportWebVitals'
 import './langage/i18n'
 import GlobalStyle from './config/style'
 import './config/icons'
+import FontStyles from './config/FontStyles'
+
 
 const { store, persistor } = createStore()
 
@@ -21,6 +22,7 @@ const App = () => {
     }, [])
   return (
     <ThemeProvider theme={theme}>
+      <FontStyles />
       <GlobalStyle />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
