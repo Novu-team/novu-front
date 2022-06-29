@@ -16,10 +16,6 @@ const NAV = [{
   path: '/mobileApp',
   label: 'App mobile'
 }, {
-  id: '/subscribe',
-  path: '/subscribe',
-  label: 'Abonnements'
-}, {
   id: '/contact',
   path: '/contact',
   label: 'Contact'

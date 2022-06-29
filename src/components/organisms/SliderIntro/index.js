@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import ItemsCarousel from 'react-items-carousel'
 import { Slider } from '@mui/material'
 import { styled as styledMaterialUi } from '@mui/system'
-import { get, isEqual, map } from 'lodash'
+import { get, map } from 'lodash'
 
 import HebergementPicture from '../../../assets/hebergement.jpg'
 import ValisesPicture from '../../../assets/Valises.jpg'
@@ -14,13 +14,20 @@ import ActivitesGif from '../../../assets/Activites.gif'
 import ParticipantsGif from '../../../assets/Participants.gif'
 import BackgroundCarousel from '../../molecules/BackgroundCarousel'
 
+import LocationIcon from '../../../assets/svg/house-rental-black-mini-mini.svg'
+import CalendarIcon from '../../../assets/svg/calendar-svgrepo-com-mini.svg'
+import BagIcon from '../../../assets/svg/dollar-black-mini.svg'
+import ParticipantIcon from '../../../assets/svg/user-group-svgrepo-com-mini.svg'
+import ActivityIcon from '../../../assets/svg/basket-ball-black-mini.svg'
+import SuitcaseIcon from '../../../assets/svg/suitcase-svgrepo-com-mini.svg'
+import ShoppingCartIcon from '../../../assets/svg/trolley-black-mini.svg'
+
 const SliderContainer = styled.div`
   padding: 40px 40px;
   background: ${({ theme }) => get(theme, 'primary', '#FFF')} no-repeat fixed center;
 
   background-size: cover;
 `
-
 
 const SliderNovuImage = styledMaterialUi(Slider)({
   color: '#fff',
@@ -83,39 +90,39 @@ const MainTitleText = styled.p`
 const sliderPictures = [
   {
     image: HebergementPicture,
-    title: '',
-    content: '',
-    icon: ''
+    title: 'Logement.',
+    content: ['Proposez, votez pour sélectionner votre logement.', ' Consultez les informations liées au logement à tout moment.'],
+    icon: LocationIcon
   }, {
     image: DatePicture,
-    title: '',
-    content: '',
-    icon: ''
+    title: 'Dates.',
+    content: ['Indiquez vos disponibilités.', 'Choisissez les dates optimales du séjour.'],
+    icon: CalendarIcon
   }, {
     image: ParticipantsGif, // Participants
-    title: '',
-    content: '',
-    icon: ''
+    title: 'Participants.',
+    content: ['Consultez toutes les informations de chaque participant.', ''],
+    icon: ParticipantIcon
   }, {
     image: DepensesPicture,
-    title: '',
-    content: '',
-    icon: ''
+    title: 'Dépenses.',
+    content: ['Suivez vos dépenses tout au long du séjour.', 'Divisez automatiquement les dépenses pour faciliter les remboursements'],
+    icon: BagIcon
   }, {
     image: ActivitesGif, // Activités
-    title: '',
-    content: '',
-    icon: ''
+    title: 'Activités.',
+    content: ['Proposez des activités au reste des participants', 'Indiquez votre participation à l’activité de votre choix'],
+    icon: ActivityIcon
   }, {
     image: ValisesPicture,
-    title: '',
-    content: '',
-    icon: ''
+    title: 'Valises.',
+    content: ['Préparez votre liste d\'affaires à amener pour votre séjour', 'Partagez une liste commune avec tous les participants  pour savoir qui prend quoi'],
+    icon: SuitcaseIcon
   }, {
     image: CoursesPicture,
-    title: '',
-    content: '',
-    icon: ''
+    title: 'Courses.',
+    content: ['Préparez vos liste de courses tous ensemble', 'Répartissez, comme bon vous semble, la liste entre les participants'],
+    icon: ShoppingCartIcon
   }
 ]
 

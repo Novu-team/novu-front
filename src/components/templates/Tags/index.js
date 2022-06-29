@@ -9,6 +9,36 @@ import ListTemplate from '../../templates/ListTemplate'
 import createInstance from '../../../utils/http'
 import { useDispatch, useSelector } from 'react-redux'
 import userToken from '../../../redux/selectors/userToken'
+import styled from 'styled-components'
+import Button from '../../atoms/Button'
+import { useNavigate } from 'react-router-dom'
+
+
+const ActionContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+const ActionButton = styled(Button)`
+  margin: 0 8px;
+`
+
+const ActionBar = () => {
+  const navigate = useNavigate()
+
+  return (
+    <ActionContainer>
+      <ActionButton
+        color='white'
+        onClick={() => {
+          navigate('/createTag')
+        }}
+        background='primary'>
+        Crée un tag
+      </ActionButton>
+    </ActionContainer>
+  )
+}
 
 const Tags = () => {
   const { t } = useTranslation()
@@ -53,7 +83,7 @@ const Tags = () => {
   return (
     <ListTemplate
       context='TAGS'
-      actionBar={() => null}
+      actionBar={ActionBar}
       columns={columns}
       type='tags' />
   )

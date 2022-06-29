@@ -20,7 +20,7 @@ const Home = () => (
     <HomeIntro />
     <InfiniteTextIntro />
     <ReviewIntro />
-    <GCUIntro />
+    {/*<GCUIntro />*/}
   </HomePage>
 )
 

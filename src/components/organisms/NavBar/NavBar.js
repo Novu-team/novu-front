@@ -22,11 +22,6 @@ const NAV = [{
   path: '/tags',
   label: 'Tags',
   iconName: ['far', 'list-alt'],
-}, {
-  id: '/listes',
-  path: '/listes',
-  label: 'Listes',
-  iconName: 'chart-bar'
 }]
 
 const Logo = styled.img`

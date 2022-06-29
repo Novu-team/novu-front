@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { get } from 'lodash'
 import RowImageDescription from '../../molecules/RowImageDescription'
 import GuillemetsImg from '../../../assets/svg/Guillemets.svg'
+import QuotationIcon from '../../../assets/svg/quote-mark-svgrepo-com-mini.svg'
 
 const GiantTitle = styled.h1`
   color: white;
@@ -25,16 +26,16 @@ const ReviewContainer = styled.div`
 
 const DATA = [{
   title: 'Avantages fiscaux',
-  descriptions: 'TESSSSt',
-  image: GuillemetsImg
+  descriptions: 'Etant une personne peu organisé, l application m a permit de bien m organiser',
+  image: QuotationIcon
 }, {
   title: 'Meilleure isolation thermique',
   descriptions: '',
-  image: GuillemetsImg
+  image: QuotationIcon
 }, {
   title: 'Performances écologiques améliorées',
   descriptions: '',
-  image: GuillemetsImg
+  image: QuotationIcon
 }]
 
 const ReviewIntro = () => {
@@ -50,7 +51,7 @@ const ReviewIntro = () => {
           </SubGiantTitle>
         </div>
 
-        {/*<RowImageDescription data={DATA} />*/}
+        <RowImageDescription data={DATA} />
       </ReviewContainer>
 
     </>
