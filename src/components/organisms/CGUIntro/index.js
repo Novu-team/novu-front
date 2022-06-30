@@ -7,6 +7,7 @@ const FooterDiv = styled.div`
   position: absolute;
   bottom: 0;
   display: flex;
+  max-height: 100px;
   height: 10%;
   width: 100%;
   background: ${({ theme }) => get(theme, 'primary', '#FFF')};

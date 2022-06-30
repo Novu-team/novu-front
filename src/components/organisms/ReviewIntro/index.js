@@ -22,6 +22,7 @@ const ReviewContainer = styled.div`
   height: 100%;
   background: ${({ theme }) => get(theme, 'darkBlue', '#FFF')} no-repeat fixed center;
   background-size: cover;
+  padding-bottom: 100px;
 `
 
 const DATA = [{
@@ -40,22 +41,17 @@ const DATA = [{
 
 const ReviewIntro = () => {
   return (
-    <>
-      <ReviewContainer>
-        <div>
-          <GiantTitle>
-            Déjà
-          </GiantTitle>
-          <SubGiantTitle>
-            adoptée
-          </SubGiantTitle>
-        </div>
-
-        <RowImageDescription data={DATA} />
-      </ReviewContainer>
-
-    </>
-
+    <ReviewContainer>
+      <div>
+        <GiantTitle>
+          Déjà
+        </GiantTitle>
+        <SubGiantTitle>
+          adoptée
+        </SubGiantTitle>
+      </div>
+      <RowImageDescription data={DATA} />
+    </ReviewContainer>
   )
 }
 

@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { get } from 'lodash'
 import { useFormik } from 'formik'
-import { useDispatch } from 'react-redux'
 import * as Yup from 'yup'
 
 import Form from '../../atoms/Form'
@@ -10,6 +9,7 @@ import Input from '../../atoms/Input'
 import Title from '../../atoms/Title'
 import Button from '../../atoms/Button'
 import logoNovu from '../../../assets/svg/Logo.svg'
+import createAxiosInstance from '../../../utils/http'
 
 const Logo = styled.img`
   width: auto;
@@ -75,11 +75,18 @@ const StyledForm = styled(Form)`
 `
 
 const ResetPasswordPage = () => {
-
   const queryParams = new URLSearchParams(window.location.search)
   const token = queryParams.get('token')
 
-  const dispatch = useDispatch()
+  const changePassword = async (token, password) => {
+    const instance = createAxiosInstance()
+    await instance.put(`/api/users/changePassword`,  {
+      token,
+      password
+    }, {
+      headers: { 'AUTHORIZATION': `Bearer ${token}` }
+    })
+  }
 
   const { values, errors, handleChange, handleSubmit } = useFormik({
     initialValues: {
@@ -88,11 +95,7 @@ const ResetPasswordPage = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      // await dispatch(loginUser(values))
-      //
-
-      console.log(values)
-      console.log(token)
+      await changePassword(token, get(values, 'password'))
     }
   })
 
@@ -125,8 +128,6 @@ const ResetPasswordPage = () => {
                 </>
               ))}
             </Container2>
-
-
             <StyledButton type={'submit'} background={'primary'} color={'white'}
                           onClick={handleSubmit}>Valider</StyledButton>
           </StyledForm>
