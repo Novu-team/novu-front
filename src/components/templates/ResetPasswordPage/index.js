@@ -80,11 +80,9 @@ const ResetPasswordPage = () => {
 
   const changePassword = async (token, password) => {
     const instance = createAxiosInstance()
-    await instance.put(`/api/user/changePassword`,  {
+    await instance.put(`/api/user/changePassword`, {
       token,
       password
-    }, {
-      headers: { 'AUTHORIZATION': `Bearer ${token}` }
     })
   }
 
