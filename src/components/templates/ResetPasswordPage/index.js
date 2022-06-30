@@ -75,6 +75,10 @@ const StyledForm = styled(Form)`
 `
 
 const ResetPasswordPage = () => {
+
+  const queryParams = new URLSearchParams(window.location.search)
+  const token = queryParams.get('token')
+
   const dispatch = useDispatch()
 
   const { values, errors, handleChange, handleSubmit } = useFormik({
@@ -84,9 +88,11 @@ const ResetPasswordPage = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      //await dispatch(loginUser(values))
+      // await dispatch(loginUser(values))
+      //
+
       console.log(values)
-      //return console.log('champs envoyé')
+      console.log(token)
     }
   })
 
