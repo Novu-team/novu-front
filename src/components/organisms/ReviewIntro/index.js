@@ -22,6 +22,10 @@ const SubGiantTitle = styled.p`
   font-size: 75px;
   color: white;
   padding-bottom: 20px;
+  
+  ${media.lessThan('sm')`
+     text-align: center;
+  `}
 `
 
 const ReviewContainer = styled.div`

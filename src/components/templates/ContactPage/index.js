@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import { get } from 'lodash'
 
 import GCUIntro from '../../organisms/CGUIntro'
-
+import JeanImage from '../../../assets/Jean.jpg'
+import EtienneImage from '../../../assets/Etienne.jpg'
+import media from '../../../utils/media'
 
 const ContactContainer = styled.div`
   display: flex;
@@ -19,15 +21,24 @@ const CircleContainer = styled.div`
   height: 25vh;
   width: 25vh;
   text-align: center;
+
+  ${media.lessThan('sm')`
+    height: 25vw;
+    width: 25vw;
+  `}
 `
 
 const CircleImage = styled.img`
+  max-width:100%;
+  max-height:100%;
+  border-radius: 50%;
 `
 
 const TitleName = styled.p`
   font-weight: lighter;
   font-size: 25px;
   padding: 20px;
+  text-align: center;
 `
 
 const TextRole = styled.p`
@@ -43,12 +54,17 @@ const ProfilContainer = styled.div`
 `
 
 const LinkContactEmail = styled.p`
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: Helvetica;
   font-weight: lighter;
   font-size: 40px;
+
+  ${media.lessThan('sm')`
+    font-size: 32px;
+  `}
 `
 
 const ContactPage = () => {
@@ -57,7 +73,7 @@ const ContactPage = () => {
       <ContactContainer>
         <ProfilContainer>
           <CircleContainer>
-            <CircleImage />
+            <CircleImage src={JeanImage} />
           </CircleContainer>
           <TitleName>
             JEAN GRAINDORGE
@@ -68,7 +84,7 @@ const ContactPage = () => {
         </ProfilContainer>
         <ProfilContainer>
           <CircleContainer>
-            <CircleImage />
+            <CircleImage src={EtienneImage} />
           </CircleContainer>
           <TitleName>
             ETIENNE DE CASABIANCA
