@@ -24,7 +24,7 @@ const TitleH2 = styled.h2`
   ${(props) => style(props)}
 
   ${media.lessThan('sm')`
-    font-size: 22px;
+    font-size: 18px;
   `}
 `
 
@@ -40,7 +40,7 @@ const TitleP = styled.p`
   ${(props) => style(props)}
 
   ${media.lessThan('sm')`
-    font-size: 22px;
+    font-size: 18px;
   `}
 `
 

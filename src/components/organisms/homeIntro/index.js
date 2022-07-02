@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import mockUpApp from '../../../assets/mockup_app_novu.png'
 import googlePlayAppStore from '../../../assets/google_play_app_store.png'
 
+import media from '../../../utils/media'
 import HomeSectionTitle from '../../atoms/HomeSectionTitle'
 import HomeSectionSubtitle from '../../atoms/HomeSectionSubtitle'
 
@@ -35,9 +36,13 @@ const Content = styled.div`
   left: 85%;
   bottom: 5%;
   flex-direction: column;
-
+  max-width: 200px;
+  
   ${media.lessThan('sm')`
-    font-size: 15px;
+    max-width: 200px;
+    left: 60%;
+    text-align: center;
+    bottom: 0%;
   `}
 `
 
