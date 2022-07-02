@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { get } from 'lodash'
+import media from '../../../utils/media'
+
 import RowImageDescription from '../../molecules/RowImageDescription'
-import GuillemetsImg from '../../../assets/svg/Guillemets.svg'
 import QuotationIcon from '../../../assets/svg/quote-mark-svgrepo-com-mini.svg'
 
 const GiantTitle = styled.h1`
@@ -10,12 +11,17 @@ const GiantTitle = styled.h1`
   font-size: 200px;
   text-align: end;
   padding-bottom: 30px;
+
+  ${media.lessThan('sm')`
+     font-size: 150px;
+     text-align: center;
+  `}
 `
 
 const SubGiantTitle = styled.p`
   font-size: 75px;
   color: white;
-  text-indent: 75%;
+  padding-bottom: 20px;
 `
 
 const ReviewContainer = styled.div`
@@ -25,31 +31,42 @@ const ReviewContainer = styled.div`
   padding-bottom: 100px;
 `
 
+const TestDiv = styled.div`
+  float: right;
+
+  ${media.lessThan('sm')`
+     float: none;
+  `}
+`
+
 const DATA = [{
-  title: 'Avantages fiscaux',
-  descriptions: 'Etant une personne peu organisé, l application m a permit de bien m organiser',
-  image: QuotationIcon
+  title: 'Centralisation complète',
+  descriptions: 'J\'adore à quel point la plateforme est conviviale, et la facilité avec laquelle on peut gérer les voyages dans un seul et même endroit',
+  icon: QuotationIcon,
+  author: '@JeremyTernisien'
 }, {
-  title: 'Meilleure isolation thermique',
-  descriptions: '',
-  image: QuotationIcon
+  title: 'Facilité d\'utilisation',
+  descriptions: 'Moi qui ne suit pas adepte des applications mobiles, Novu ne m\'a posé aucun problème d\'utilisation ! Merci Novu',
+  icon: QuotationIcon,
+  author: '@JamesBertho'
 }, {
-  title: 'Performances écologiques améliorées',
-  descriptions: '',
-  image: QuotationIcon
+  title: 'Rapidité d\'organisation',
+  descriptions: 'Réserver nos voyages était un cauchemar, et maintenant grâce à Novu, c\'est un parti de plaisir et un gain de temps !',
+  icon: QuotationIcon,
+  author: '@LucasPothier'
 }]
 
 const ReviewIntro = () => {
   return (
     <ReviewContainer>
-      <div>
+      <TestDiv>
         <GiantTitle>
           Déjà
         </GiantTitle>
         <SubGiantTitle>
           adoptée
         </SubGiantTitle>
-      </div>
+      </TestDiv>
       <RowImageDescription data={DATA} />
     </ReviewContainer>
   )

@@ -32,9 +32,13 @@ const Content = styled.div`
   display: flex;
   position: absolute;
   align-items: center;
-  left: 90%;
-  top: 80%;
+  left: 85%;
+  bottom: 5%;
   flex-direction: column;
+
+  ${media.lessThan('sm')`
+    font-size: 15px;
+  `}
 `
 
 const HomeIntro = () => {
