@@ -70,10 +70,6 @@ const NavBarHome = () => {
     return navigate('/login')
   }
 
-  const goToInstagram = () => {
-    return
-  }
-
   const goToHome = () => {
     return navigate('/')
   }

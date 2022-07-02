@@ -84,10 +84,6 @@ const NavBar = () => {
       </ContainerRow>
       <ContainerRow>
         <StyledRoundButton
-          color='primary'
-          borderColor='blue'
-          iconName='user-shield' />
-        <StyledRoundButton
           color='alert'
           onClick={onLogout}
           iconName='sign-out-alt'

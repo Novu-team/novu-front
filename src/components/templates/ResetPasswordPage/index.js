@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { get } from 'lodash'
-import { useFormik } from 'formik'
+import { ErrorMessage, useFormik } from 'formik'
 import * as Yup from 'yup'
 
 import Form from '../../atoms/Form'
@@ -10,6 +10,8 @@ import Title from '../../atoms/Title'
 import Button from '../../atoms/Button'
 import logoNovu from '../../../assets/svg/Logo.svg'
 import createAxiosInstance from '../../../utils/http'
+import Toast from '../../molecules/Toast/Toast'
+import { TOAST_PROPERTIES } from '../../molecules/Toast/toastProperties'
 
 const Logo = styled.img`
   width: auto;
@@ -63,6 +65,7 @@ const Container = styled.div`
 const Container2 = styled.div`
   display: flex;
   margin-bottom: 40px;
+  flex-direction: column;
 `
 
 const CenteredTitle = styled(Title)`
@@ -74,9 +77,22 @@ const StyledForm = styled(Form)`
   margin-left: 24px;
 `
 
+const ErrorMessageStyled = styled.p`
+  color: red;
+  padding-top: 20px;
+`
+
 const ResetPasswordPage = () => {
   const queryParams = new URLSearchParams(window.location.search)
   const token = queryParams.get('token')
+
+  const [toasts, setList] = useState([]);
+
+  const showToast = ({ type, description, titleToast }) => {
+    const toastProperties = TOAST_PROPERTIES.find((toast) => toast.title.toLowerCase() === type);
+
+    setList([...toasts, { ...toastProperties, description, titleToast }]);
+  }
 
   const changePassword = async (token, password) => {
     const instance = createAxiosInstance()
@@ -93,12 +109,26 @@ const ResetPasswordPage = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      await changePassword(token, get(values, 'password'))
+      try {
+        await changePassword(token, get(values, 'password'))
+
+        return showToast({ type: 'success',
+          titleToast: 'Success',
+          description: 'Changement de mot de passe réussie'
+        })
+      } catch (e) {
+        const statusErrorCode = get(e, 'response.status', '400')
+        return showToast({ type: 'danger',
+          titleToast: `Erreur ${statusErrorCode}`,
+          description: 'Le mot de passe n\'a pas pu être changé'
+        })
+      }
     }
   })
 
   return (
     <ContainerRoot>
+      <Toast toastList={toasts} position={'top-right'} />
       <Container>
         <Logo src={logoNovu} />
         <CenteredTitle color="primary">Réinitialisez votre mot de passe</CenteredTitle>
@@ -119,11 +149,11 @@ const ResetPasswordPage = () => {
               value={get(values, 'confirmPassword')}
               onChange={handleChange} />
             <Container2>
-              {Object.values(errors).map(msg => (
-                <>
+              {Object.values(errors).map((msg, index) => (
+                <ErrorMessageStyled key={index}>
                   {msg}
                   <br />
-                </>
+                </ErrorMessageStyled>
               ))}
             </Container2>
             <StyledButton type={'submit'} background={'primary'} color={'white'}

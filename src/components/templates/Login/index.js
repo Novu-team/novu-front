@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { get } from 'lodash'
 import { useFormik } from 'formik'
@@ -14,6 +14,8 @@ import logoNovu from '../../../assets/svg/Logo.svg'
 import authErrorSelector from '../../../redux/selectors/authError'
 import { loginUser } from '../../../redux/slices/authentication'
 import { useNavigate } from 'react-router-dom'
+import Toast from '../../molecules/Toast/Toast'
+import { TOAST_PROPERTIES } from '../../molecules/Toast/toastProperties'
 
 const Logo = styled.img`
   width: auto;
@@ -70,9 +72,17 @@ const StyledForm = styled(Form)`
 `
 
 const Login = () => {
+  const [toasts, setList] = useState([]);
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const authError = useSelector(authErrorSelector)
+
+  const showToast = ({ type, description, titleToast }) => {
+    const toastProperties = TOAST_PROPERTIES.find((toast) => toast.title.toLowerCase() === type);
+
+    setList([...toasts, { ...toastProperties, description, titleToast }]);
+  }
 
   const { values, errors, handleChange, handleSubmit } = useFormik({
     initialValues: {
@@ -81,14 +91,34 @@ const Login = () => {
     },
     validationSchema: loginSchema,
     onSubmit: async (values) => {
-      await dispatch(loginUser(values))
+      try {
+        const loginRequest = loginUser(values)
+        const loginResult = await dispatch(loginRequest)
 
-      return navigate('/users')
+        if (get(loginResult, 'error')) {
+          throw Error('goToForbidden')
+        }
+
+        showToast({ type: 'success',
+          titleToast: 'Success',
+          description: 'Login réussi'
+        })
+
+        return setTimeout(() => navigate('/users'), 1000)
+      } catch (e) {
+        const statusErrorCode = get(e, 'response.status', '403')
+
+        return showToast({ type: 'danger',
+          titleToast: `Erreur ${statusErrorCode}`,
+          description: 'Mauvais identifiant ou mot de passe'
+        })
+      }
     }
   })
 
   return (
     <ContainerRoot>
+      <Toast toastList={toasts} position={'top-right'} />
       <Container>
         <Logo src={logoNovu} />
         <CenteredTitle color='primary'>Connexion</CenteredTitle>
