@@ -8,24 +8,25 @@ import media from '../../../utils/media'
 import HomeSectionSubtitle from '../../atoms/HomeSectionSubtitle'
 import HomeSectionDescription from '../../atoms/HomeSectionDescription'
 
-
 const DataContainer = styled.div`
   display: flex;
   width: 100%;
   margin: 32px auto;
   justify-content: space-around;
   
-  // ${media.lessThan('md')`
-  //   flex-direction: column;
-  //   align-items: center;
-  //   justify-content: center;
-  // `}
-  // ${media.greaterThan('sm')`
-  //   margin: 40px auto;
-  // `}
+  ${media.lessThan('md')`
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  `}
+  
+  ${media.greaterThan('sm')`
+    margin: 40px auto;
+  `}
 `
 
 const PartContainer = styled.div`
+  margin: 0 20px;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -33,8 +34,10 @@ const PartContainer = styled.div`
 `
 
 const PartTitle = styled(HomeSectionSubtitle)`
-  margin: 8px auto 0;
+  margin: 8px auto 20px;
   text-align: center;
+  font-size: xx-large;
+  
   ${media.lessThan('sm')`
     margin-top: 0;
     margin-bottom: 0;
@@ -42,14 +45,21 @@ const PartTitle = styled(HomeSectionSubtitle)`
 `
 
 const PartDescription = styled(HomeSectionDescription)`
+  margin: 20px 0;
   text-align: center;
 `
 
-const ProgramsProfitsImage = styled.img`
-  
+const AuthorStatement = styled(HomeSectionDescription)`
+  margin: 20px 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: x-large;
 `
 
+
 const IconSVGStyled = styled(SVG)`
+  margin-bottom: 20px;
+  
   & path {
     fill: ${({ color }) => color};
   }
@@ -59,12 +69,12 @@ IconSVGStyled.propTypes = {
   color: PropTypes.string
 }
 
-const ProfitsPart = ({ data }) => map(data, ({ title, description, icon }) => (
+const ProfitsPart = ({ data }) => map(data, ({ title, descriptions, icon, author }) => (
   <PartContainer key={`${title}`}>
     <IconSVGStyled color={'white'} src={icon} />
-    {/*<ProgramsProfitsImage src={icon} />*/}
     <PartTitle>{title}</PartTitle>
-    <PartDescription dangerouslySetInnerHTML={{ __html: description }} />
+    <PartDescription>{descriptions}</PartDescription>
+    <AuthorStatement>{author}</AuthorStatement>
   </PartContainer>
 ))
 

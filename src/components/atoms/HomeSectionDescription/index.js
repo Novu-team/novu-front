@@ -5,8 +5,7 @@ import media from '../../../utils/media'
 
 const HomeSectionDescription = styled.p`
   font-size: 16px;
-  line-height: normal;
-  color: ${({ theme }) => get(theme, 'blue', '#FFF')};
+  color: ${({ theme }) => get(theme, 'white', '#FFF')};
 
   ${media.lessThan('sm')`
     font-size: 15px;
@@ -14,7 +13,7 @@ const HomeSectionDescription = styled.p`
 
   & > a {
     text-decoration: none;
-    color: ${({ theme }) => get(theme, 'brightOrange', '#FFF')};
+    color: ${({ theme }) => get(theme, 'white', '#FFF')};
   }
 
   & > strong {
@@ -22,7 +21,7 @@ const HomeSectionDescription = styled.p`
   }
 
   & > span {
-    color: ${({ theme }) => get(theme, 'brightOrange', '#FFF')};
+    color: ${({ theme }) => get(theme, 'white', '#FFF')};
   }
 
   & > em {

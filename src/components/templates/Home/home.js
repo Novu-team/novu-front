@@ -18,9 +18,9 @@ const Home = () => (
     <SliderIntro />
     <ExplanationNovuIntro />
     <HomeIntro />
-    <InfiniteTextIntro />
+    {/*<InfiniteTextIntro />*/}
     <ReviewIntro />
-    {/*<GCUIntro />*/}
+    <GCUIntro />
   </HomePage>
 )
 

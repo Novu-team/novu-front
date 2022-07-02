@@ -29,7 +29,6 @@ const CGUPage = () => {
         Acceptation de nos conditions générales
       </SubGiantTitle>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         L'accès aux services proposés par NOVU se fera uniquement sous la réserve de l'acceptation des conditions décrites ci-dessous que NOVU est libre de modifier à tout moment et sans aucun préavis. L'utilisation de nos services implique le traitement de vos informations tel que décrit dans notre politique de confidentialité. Nous vous invitons à en prendre connaissance. L'utilisateur est invité à se référer régulièrement à la dernière version des présentes conditions disponibles en permanence à l'adresse suivante : https://www.novu-app.com/fr/conditions-generales.
         Cette version des conditions générales date du xx/xx/2022.
         La version française de ce document prévaut sur toutes les autres langues.
@@ -38,7 +37,7 @@ const CGUPage = () => {
         Droits intellectuels
       </SubGiantTitle>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
+
         Le nom NOVU ainsi que tous ses logos sont des marques déposées. Il n'est pas autorisé d'utiliser ces marques à des fins personnelles, quelles qu'elles soient. L'utilisateur de NOVU s'engage à ne pas reproduire, copier, vendre, marchander ou céder tout ou partie des services de NOVU, sous aucun prétexte. Il s'engage également à ne pas masquer ou modifier nos services (la marque NOVU ou les publicités par exemple).
       </TextContent>
       <SubGiantTitle>
@@ -51,46 +50,36 @@ const CGUPage = () => {
         NOVU est accessible en ligne sur le site internet www.novu-app.com mais également via des applications mobiles. Les événements peuvent être partagés entre amis via un lien de partage.
       </TextContent>
       <SubGiantTitle>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Conseils d'utilisation pour un fonctionnement optimal de l'outil
       </SubGiantTitle>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Le lien hypertexte permettant d'accéder aux événements NOVU ne doit être transmis qu'à des personnes que vous désirez inviter personnellement à vos événements.Considérez ce lien comme l'unique “clef” permettant d'accéder à vos événements NOVU.
       </TextContent>
       <TextContent>
         Bien que non limité, ni dans le temps, ni en nombre de participants, il est conseillé de créer un événement NOVU pour une durée et un nombre de participants raisonnables.
       </TextContent>
       <SubGiantTitle>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Cadre d'utilisation approprié
       </SubGiantTitle>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         NOVU est adapté à une utilisation entre amis, en famille, entre collègues. Nous vous recommandons de toujours connaître au moins personnellement une personne parmi les participants. La confiance doit régner dans le groupe tout au long de l'utilisation d'un événement NOVU. Vous utilisez NOVU pour faciliter l’organisation de votre événement, il est donc recommandé de collaborer avec chacun pour que vôtre événement se prépare, puis se déroule de la manière la plus fluide possible.
       </TextContent>
       <SubGiantTitle>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Conditions d'accès
       </SubGiantTitle>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Vous ne pouvez pas utiliser NOVU si les lois de la juridiction applicable vous interdisent de recevoir des services tels que nous les proposons, si nous avons précédemment banni votre compte pour violation de ces conditions, ou si vous n'êtes pas en âge d'accepter des conditions d'utilisation.
       </TextContent>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Le Service n'est pas destiné aux personnes âgées de moins de 16 ans, et nous demandons à ces personnes de ne pas fournir d'informations personnelles par le biais du Service. Si votre enfant a soumis des informations personnelles et que vous souhaitez demander que ces informations personnelles soient supprimées, veuillez nous contacter via l'adresse privacy@novu-app.com ou par courrier au 10 rue du port Larron, 44610 Indre, France.
       </TextContent>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Comme utilisateur de NOVU, vous devez à tout moment fournir des données correctes à NOVU ainsi qu'au groupe participant aux comptes ; toujours vérifier les informations vous concernant.
       </TextContent>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Comme utilisateur de NOVU, vous vous engagez expressément à ne jamais : véhiculer du contenu qui soit illégal, nuisible, menaçant, abusif, constitutif de harcèlement, diffamatoire, vulgaire, obscène, menaçant pour la vie privée d'autrui, haineux, raciste, ou autrement répréhensible ; véhiculer du contenu violant un brevet ou une marque déposée ; porter atteinte de façon quelconque à d'autres utilisateurs ; harceler de quelque manière que ce soit un autre ou plusieurs autres utilisateurs ; tenter de tromper ou d'induire en erreur d'autres utilisateurs ; utiliser NOVU dans des chaînes d'emails (de type "hoax") ; entraver ou perturber intentionnellement nos services ; avoir une utilisation de NOVU qui serait contraire à la loi française; violer, intentionnellement ou non, toute loi ou réglementation nationale ou internationale en vigueur et toutes autres règles ayant force de loi ; reproduire, copier, vendre, revendre, ou exploiter dans un but commercial quel qu'il soit toute partie ou utilisation de nos services, tout droit d'accès à nos services.
       </TextContent>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         NOVU n'est en aucun cas responsable de l'exactitude ou de la précision des données rentrées par vous ou par les autres participants sur NOVU. NOVU ne jouera pas les arbitres au sein de votre groupe et ne pourra être tenu responsable du caractère inexact de certaines données. NOVU doit être vu comme un outil de consensus permettant d’organiser votre événement de la manière la plus fluide possible et non comme un outil permettant de stocker l'historique de l’ensemble de l’événement. En aucun cas NOVU ne pourra être tenu responsable de quelque nature que ce soit de dégâts directs ou indirects qui résulteraient : d'une utilisation inappropriée de ses services, d'une utilisation jugée illégale ou frauduleuse de ses services, de l'inexactitude des données sur un événement NOVU, de résultats erronés fournis par ses services, d'une indisponibilité temporaire ou durable de ses services, d'une défaillance quelconque de ses services, de toute cause en relation avec ses services.
       </TextContent>
       <SubGiantTitle>
@@ -100,7 +89,6 @@ const CGUPage = () => {
         Un événement NOVU ne doit JAMAIS avoir une quelconque valeur contractuelle aux yeux des utilisateurs. Pour le bon fonctionnement de l'outil, il est important que ceux ayant accès à un même événement NOVU (amis, famille, collègues) soient liés moralement ou contractuellement entre eux.
       </TextContent>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Un lien http permet d'accéder à NOVU. Ce lien est unique et ne peut pas être modifié.. Ce lien donne un accès à NOVU en lecture et en écriture. IL EST IMPORTANT DE NE JAMAIS COMMUNIQUER CE LIEN A DES PERSONNES QUI NE SONT PAS DIRECTEMENT IMPLIQUÉES DANS VOTRE ÉVÉNEMENT NOVU !
       </TextContent>
       <TextContent>
