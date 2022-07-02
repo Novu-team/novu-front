@@ -51,6 +51,9 @@ const StyledRoundButton = styled(RoundButton)`
   margin: 0 16px;
 `
 
+const LinkToInstagram = styled.a`
+`
+
 const NavLinks = () => {
   const location = useLocation()
   const pathName = get(location, 'pathname', '/')
@@ -65,6 +68,10 @@ const NavBarHome = () => {
   const navigate = useNavigate()
   const goToLogin = () => {
     return navigate('/login')
+  }
+
+  const goToInstagram = () => {
+    return
   }
 
   const goToHome = () => {
@@ -85,7 +92,9 @@ const NavBarHome = () => {
           onClick={goToLogin}
           borderColor='blue'
           iconName='user-shield' />
-        <Logo src={InstaLogo} />
+        <LinkToInstagram href={'https://www.instagram.com/novu_app'}>
+          <Logo src={InstaLogo} />
+        </LinkToInstagram>
       </ContainerRow>
     </Container>
   )
