@@ -17,7 +17,7 @@ const IconLink = styled(Icon)`
 `
 
 const StyledLink = styled(Link)`
-  margin: 0 32px;
+  margin: 0 16px;
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -117,8 +117,6 @@ const NavToggle = ({ list, label, isSelected, iconName, component, pathName }) =
       document.removeEventListener('mousedown', handleClick)
     }
   }, [])
-
-  console.log(label)
 
   return (
     <div ref={node}>
