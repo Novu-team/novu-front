@@ -32,23 +32,6 @@ const ActionButton = styled(Button)`
   margin: 0 8px;
 `
 
-const ActionBar = () => {
-  const navigate = useNavigate()
-
-  return (
-    <ActionContainer>
-      <ActionButton
-        color='white'
-        onClick={() => {
-          navigate('/createAdmin')
-        }}
-        background='primary'>
-        Crée un administrateur
-      </ActionButton>
-    </ActionContainer>
-  )
-}
-
 const Users = () => {
   const dispatch = useDispatch()
   const instance = createInstance(dispatch)
@@ -132,7 +115,7 @@ const Users = () => {
   return (
     <ListTemplate
       context='USERS'
-      actionBar={ActionBar}
+      actionBar={() => {}}
       columns={columns}
       type='users' />
   )

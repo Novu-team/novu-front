@@ -10,6 +10,8 @@ import userToken from '../../../redux/selectors/userToken'
 import styled from 'styled-components'
 import Button from '../../atoms/Button'
 import { useNavigate } from 'react-router-dom'
+import Link from '../../atoms/Link'
+import { get } from 'lodash'
 
 
 const ActionContainer = styled.div`
@@ -56,7 +58,13 @@ const Tags = () => {
   const columns = useMemo(() => [{
     id: 'name',
     Header: 'Nom',
-    accessor: 'name'
+    accessor: 'name',
+    // eslint-disable-next-line
+    Cell: ({ value, row }) => (
+      <Link to={`/tags/${get(row, 'original.id')}`}>
+        {value}
+      </Link>
+    )
   }, {
     Header: 'Type',
     accessor: 'type'
