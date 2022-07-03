@@ -65,12 +65,6 @@ const ListTemplate = ({ context, actionBar: ActionBar, columns, type, fields, sp
 
   return (
     <Container>
-      {/*<SearchBar*/}
-      {/*  count={get(data, 'count', 0)}*/}
-      {/*  fields={fields}*/}
-      {/*  search={search}*/}
-      {/*  updateSearch={updateSearch}*/}
-      {/*  context={context} />*/}
       <ContainerRight>
         <ContainerRow>
           <ActionBar />

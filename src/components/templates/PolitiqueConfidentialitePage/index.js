@@ -41,14 +41,12 @@ const PolitiqueConfidentialitePage = () => {
         Acceptation de nos conditions générales
       </SubGiantTitle>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Devant le développement des nouveaux outils de communication, il est nécessaire de porter une attention particulière à la protection de la vie privée. C’est pourquoi, nous nous engageons à respecter la confidentialité des renseignements personnels que nous collectons.
       </TextContent>
       <SubGiantTitle>
         Collecte des renseignements personnels
       </SubGiantTitle>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         <ListContent>
           <li>
             Nom, Prénom
@@ -100,11 +98,9 @@ const PolitiqueConfidentialitePage = () => {
         </ListContent>
       </TextContent>
       <SubGiantTitle>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Droit d’opposition et de retrait
       </SubGiantTitle>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Nous nous engageons à vous offrir un droit d’opposition et de retrait quant à vos renseignements personnels.
       </TextContent>
       <TextContent>
@@ -115,7 +111,6 @@ const PolitiqueConfidentialitePage = () => {
       </TextContent>
       <SubSubGiantTitle>Pour pouvoir exercer ces droits, vous pouvez :</SubSubGiantTitle>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         <ListContent>
           <li>
             Code postal :  44610
@@ -132,19 +127,15 @@ const PolitiqueConfidentialitePage = () => {
         </ListContent>
       </TextContent>
       <SubGiantTitle>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Droit d’accès
       </SubGiantTitle>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Nous nous engageons à reconnaître un droit d’accès et de rectification aux personnes concernées désireuses de consulter, modifier, voire radier les informations les concernant.
       </TextContent>
       <SubSubGiantTitle>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         L’exercice de ce droit se fera :
       </SubSubGiantTitle>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         <ListContent>
           <li>
             Code postal :  44610
@@ -161,19 +152,15 @@ const PolitiqueConfidentialitePage = () => {
         </ListContent>
       </TextContent>
       <SubGiantTitle>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Sécurité
       </SubGiantTitle>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Les renseignements personnels que nous collectons sont conservés dans un environnement sécurisé. Les personnes travaillant pour nous sont tenues de respecter la confidentialité de vos informations.
       </TextContent>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Pour assurer la sécurité de vos renseignements personnels, nous avons recours aux mesures suivantes :
       </TextContent>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         <ListContent>
           <li>
             Gestion des accès - personne autorisée
@@ -196,7 +183,6 @@ const PolitiqueConfidentialitePage = () => {
         Nous nous engageons à respecter les dispositions législatives énoncées dans :
       </TextContent>
       <TextContent>
-        {/* eslint-disable-next-line react/no-unescaped-entities */}
         Législation : Règlement Général sur la Protection des Données (RGPD)
       </TextContent>
     </>

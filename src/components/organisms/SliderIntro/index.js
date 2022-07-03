@@ -99,7 +99,7 @@ const sliderPictures = [
     content: ['Indiquez vos disponibilités.', 'Choisissez les dates optimales du séjour.'],
     icon: CalendarIcon
   }, {
-    image: ParticipantsGif, // Participants
+    image: ParticipantsGif,
     title: 'Participants.',
     content: ['Consultez toutes les informations de chaque participant.', ''],
     icon: ParticipantIcon
@@ -109,20 +109,10 @@ const sliderPictures = [
     content: ['Suivez vos dépenses tout au long du séjour.', 'Divisez automatiquement les dépenses pour faciliter les remboursements'],
     icon: BagIcon
   }, {
-    image: ActivitesGif, // Activités
+    image: ActivitesGif,
     title: 'Activités.',
     content: ['Proposez des activités au reste des participants', 'Indiquez votre participation à l’activité de votre choix'],
     icon: ActivityIcon
-  }, {
-    image: ValisesPicture,
-    title: 'Valises.',
-    content: ['Préparez votre liste d\'affaires à amener pour votre séjour', 'Partagez une liste commune avec tous les participants  pour savoir qui prend quoi'],
-    icon: SuitcaseIcon
-  }, {
-    image: CoursesPicture,
-    title: 'Courses.',
-    content: ['Préparez vos liste de courses tous ensemble', 'Répartissez, comme bon vous semble, la liste entre les participants'],
-    icon: ShoppingCartIcon
   }
 ]
 
@@ -133,16 +123,11 @@ const SliderIntro = () => {
     return setActiveItemIndex(e.target.value)
   }
 
-  const activateBlurEffect = (e) => {
-    console.log(e)
-  }
-
   return (
     <SliderContainer>
       <MainTitleContainer>
         <MainTitleText>
-          {/* eslint-disable-next-line react/no-unescaped-entities */}
-          L'APP COLLABORATIVE POUR TES SÉJOURS.
+          L&apos;APP COLLABORATIVE POUR TES SÉJOURS.
         </MainTitleText>
       </MainTitleContainer>
       <ItemsCarousel
@@ -160,7 +145,7 @@ const SliderIntro = () => {
         <SliderNovuImage
           value={activeItemIndex}
           min={0}
-          max={3}
+          max={1}
           onChange={onImageSliderChange}
           valueLabelDisplay="auto"
         />
