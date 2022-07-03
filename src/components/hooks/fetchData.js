@@ -1,12 +1,12 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { get, isEqual } from 'lodash'
+import { get, isEmpty, isEqual } from 'lodash'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 import createInstance from '../../utils/http'
 
 
-const FetchData = (type, token, page, search) => {
+const FetchData = (type, token, page, search, specialName) => {
   const dispatch = useDispatch()
   const [count, updateCount] = useState(0)
   const [loading, updateLoading] = useState(false)
@@ -25,8 +25,9 @@ const FetchData = (type, token, page, search) => {
         params: { page, search }
       })
 
-      console.log({ data })
-      updateFetched(get(data, type, []))
+      const field = isEmpty(specialName) ? type : specialName
+
+      updateFetched(get(data, field, []))
     } catch (err) {
       console.log(err)
     } finally {
@@ -41,7 +42,7 @@ const FetchData = (type, token, page, search) => {
         headers: { 'AUTHORIZATION': `Bearer ${token}` },
         params: { search }
       })
-      console.log({ dataCount })
+
       updateMaxPage(get(dataCount, 'maxPage', 1))
       updateCount(get(dataCount, 'count', 0))
     } catch (err) {

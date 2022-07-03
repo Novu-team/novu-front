@@ -20,6 +20,8 @@ import PolitiqueConfidentialitePage from '../components/templates/PolitiqueConfi
 import ContactPage from '../components/templates/ContactPage'
 import SubscribeOfferPage from '../components/templates/SubscribeOfferPage'
 import ResetPasswordPage from '../components/templates/ResetPasswordPage'
+import User from '../components/templates/User'
+import CreateTag from '../components/templates/CreateTag'
 
 const Container = styled.div`
   padding-top: calc(40px + 16px + 9px);
@@ -44,8 +46,10 @@ const AppRouter = () => {
           <Route path='conditions-generales' element={<CGUPage />} />
           <Route path='politique-confidentialite' element={<PolitiqueConfidentialitePage />} />
           <Route isLogged={false} path='/' element={<AuthRoute />}>
-            <Route path='users' element={<Users />} />
             <Route path='tags' element={<Tags />} />
+            <Route path='users' element={<Users />} />
+            <Route path='users/:id' element={<User />} />
+            <Route path='createTag' element={<CreateTag />} />
           </Route>
         </Routes>
       </Container>

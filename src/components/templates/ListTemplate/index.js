@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react'
 import { get, omit, isEqual } from 'lodash'
 
 import DataTable from '../../organisms/DataTable'
-import SearchBar from '../../organisms/SearchBar'
 import fetchData from '../../hooks/fetchData'
 import userToken from '../../../redux/selectors/userToken'
 
@@ -38,7 +37,7 @@ const ContainerRow = styled.div`
   margin-bottom: 16px;
 `
 
-const ListTemplate = ({ context, actionBar: ActionBar, columns, type, fields }) => {
+const ListTemplate = ({ context, actionBar: ActionBar, columns, type, fields, specialName }) => {
   const token = useSelector(userToken)
   const location = useLocation()
 
@@ -62,7 +61,7 @@ const ListTemplate = ({ context, actionBar: ActionBar, columns, type, fields }) 
     }
   }, [location])
 
-  const data = fetchData(type, token, page, search)
+  const data = fetchData(type, token, page, search, specialName)
 
   return (
     <Container>
@@ -93,7 +92,8 @@ ListTemplate.propTypes = {
   fields: PropTypes.array.isRequired,
   context: PropTypes.string.isRequired,
   columns: PropTypes.array.isRequired,
-  actionBar: PropTypes.elementType.isRequired
+  actionBar: PropTypes.elementType.isRequired,
+  specialName: PropTypes.string,
 }
 
 export default ListTemplate

@@ -1,7 +1,5 @@
 import React, { useCallback } from 'react'
-import { get } from 'lodash'
 import { useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import Center from '../../atoms/Center'
 import RoundButton from '../../atoms/RoundButton'
@@ -41,7 +39,6 @@ const ActionBar = () => {
 }
 
 const Tags = () => {
-  const { t } = useTranslation()
   const dispatch = useDispatch()
   const instance = createInstance(dispatch)
   const token = useSelector(userToken)
@@ -85,7 +82,9 @@ const Tags = () => {
       context='TAGS'
       actionBar={ActionBar}
       columns={columns}
-      type='tags' />
+      type='tagsPage'
+      specialName='tags'
+    />
   )
 }
 
