@@ -1,19 +1,11 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { get, isEqual } from 'lodash'
 import { useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import Link from '../../atoms/Link'
 import Center from '../../atoms/Center'
-import RoundButton from '../../atoms/RoundButton'
 import ListTemplate from '../../templates/ListTemplate'
-import createInstance from '../../../utils/http'
-import { useDispatch, useSelector } from 'react-redux'
-import userToken from '../../../redux/selectors/userToken'
 import styled from 'styled-components'
-import Button from '../../atoms/Button'
-import { useNavigate } from 'react-router-dom'
-
 
 const TableCell = styled.td`
   height: 45px;
@@ -23,30 +15,7 @@ const TableCell = styled.td`
   text-align: ${({ left }) => left ? 'left' : 'center'};
 `
 
-const ActionContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-const ActionButton = styled(Button)`
-  margin: 0 8px;
-`
-
 const Users = () => {
-  const dispatch = useDispatch()
-  const instance = createInstance(dispatch)
-  const token = useSelector(userToken)
-
-  const deleteUser = useCallback(async (id) => {
-    try {
-      await instance.delete(`/api/users/${id}`, {
-        headers: { 'AUTHORIZATION': `Bearer ${token}` }
-      })
-    } catch (err) {
-      console.log(err)
-    }
-  })
-
   const columns = useMemo(() => [{
     id: 'name',
     Header: 'Nom',
@@ -95,21 +64,6 @@ const Users = () => {
         </Center>
       )
     }
-  }, {
-    Header: 'Suppression',
-    accessor: 'userId',
-    // eslint-disable-next-line
-    Cell: ({ value, row }) => (
-      <Center>
-        <RoundButton
-          color='white'
-          onClick={() => {
-            return deleteUser(`${value}`)
-          }}
-          background={'primary'}
-          iconName='trash-alt'/>
-      </Center>
-    )
   }], [])
 
   return (

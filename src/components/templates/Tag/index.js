@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react'
+
 import { useParams } from 'react-router-dom'
 import createAxiosInstance from '../../../utils/http'
 import { useSelector } from 'react-redux'
@@ -7,6 +8,7 @@ import styled from 'styled-components'
 import { get, isEqual, reduce, size } from 'lodash'
 import DataTableAlone from '../../organisms/DataTableAlone'
 import Loading from '../../atoms/Loading'
+import Link from '../../atoms/Link'
 
 
 const Container = styled.div`
@@ -53,10 +55,8 @@ const SubGiantTitle = styled.h2`
 `
 
 const TagPage = () => {
-  const [groups, setGroups] = useState([])
-  const [housings, setHousing] = useState([])
+  const [tag, setTag] = useState({})
   const [tagsLike, setTagsLike] = useState([])
-  const [activities, setActivities] = useState([])
   const [tagsDislike, setTagsDislike] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -66,94 +66,60 @@ const TagPage = () => {
 
   useEffect(() => {
     try {
-      const getUserFullInfo = async (userId) => {
-        const { data }  = await instance.get(`/api/tag/${userId}`, {
+      const getTagInfo = async (tagId) => {
+        const { data }  = await instance.get(`/api/tag/${tagId}`, {
           headers: { 'AUTHORIZATION': `Bearer ${token}` }
         })
 
-        const { isLike, isNotLike } = reduce(data, (acc, value) => {
+        const { tag, tags } = data
+
+        const { isLike, isDislike } = reduce(tags, (acc, value) => {
           if (isEqual(get(value, 'isLike'), true)) {
             return {
-              ...acc, isLike: value
+              ...acc, isLike: [...get(acc, 'isLike', []), value]
             }
           }
           return {
-            ...acc, isNotLike: value
+            ...acc, isDislike: [...get(acc, 'isDislike', []), value]
           }
-        }, {isLike: [], isNotLike: []})
+        }, { isLike: [], isDislike: [] })
 
-        const tagsLike = get(user, 'likeTags')
-        const tagsDislike = get(user, 'dislikeTags')
+        console.log(isLike)
+        console.log(isDislike)
 
-        setUser(user)
-        setGroups(groups)
-        setHousing(housings)
-        setTagsLike(tagsLike)
-        setActivities(activities)
-        setTagsDislike(tagsDislike)
+        setTag(tag)
+        setTagsLike(isLike)
+        setTagsDislike(isDislike)
 
         setLoading(false)
       }
 
-      getUserFullInfo(id)
+      getTagInfo(id)
     } catch (e) {
       console.log(e)
     }
   }, [])
 
-  const columnsGroup = useMemo(() => [{
-    id: 'name',
-    Header: 'Nom',
-    accessor: 'name'
+  const likeColumns = useMemo(() => [{
+    id: 'user',
+    Header: 'Name',
+    accessor: 'user.name',
+    // eslint-disable-next-line
+    Cell: ({ value, row }) => {
+      console.log(row)
+      return (
+      <Link to={`/users/${get(row, 'original.user.userId.value')}`}>
+        {value}
+      </Link>
+    )}
   }, {
-    id: 'participantNumber',
-    Header: 'Nombre de Participants',
-    accessor: ({ participants }) => `${size(participants)}`,
+    id: 'numberLike',
+    Header: 'Nombre de tags aimé',
+    accessor: ({ user }) => `${size(get(user, 'likeTags', []))}`,
   }, {
-    id: 'codeToJoin',
-    Header: 'Code d invitation',
-    accessor: 'codeToJoin'
-  }], [])
-
-  const tagcolumns = useMemo(() => [{
-    id: 'name',
-    Header: 'Nom',
-    accessor: 'name'
-  }, {
-    Header: 'Catégorie',
-    accessor: 'type'
-  }], [])
-
-  const locationColumns = useMemo(() => [{
-    id: 'name',
-    Header: 'Nom',
-    accessor: 'name'
-  }, {
-    id: 'url',
-    Header: 'Lien vers la location',
-    accessor: 'url'
-  }, {
-    id: 'available',
-    Header: 'Disponible',
-    accessor: ({ available }) => `${isEqual(available, true) ? 'disponible' : 'indisponible'}`,
-  }, {
-    id: 'description',
-    Header: 'Description',
-    accessor: 'description'
-  }], [])
-
-  const activityColumns = useMemo(() => [{
-    id: 'name',
-    Header: 'Nom',
-    accessor: 'name'
-  }, {
-    id: 'price',
-    Header: 'Prix',
-    accessor: 'price'
-  }, {
-    id: 'dateTime',
-    Header: 'Date de début',
-    accessor: 'dateTime'
+    id: 'numberDisLike',
+    Header: 'Nombre de tags pas aimé',
+    accessor: ({ user }) => `${size(get(user, 'dislikeTags', []))}`,
   }], [])
 
   if (loading) {
@@ -167,55 +133,26 @@ const TagPage = () => {
   return (
     <MainContainer>
       <GiantTitle>
-        {get(user, 'firstName')} {get(user, 'name')}
+        {get(tag, 'name')} ({get(tag, 'type')})
       </GiantTitle>
       <ContainerRow>
         <ContainerRight>
           <SubGiantTitle>
-            Events Actif ({size(groups)})
-          </SubGiantTitle>
-        </ContainerRight>
-        <ContainerRight>
-          <DataTableAlone
-            data={groups}
-            columns={columnsGroup}
-            loading={get(user, 'loading', false)} />
-        </ContainerRight>
-        <ContainerRight>
-          <SubGiantTitle>
-            Tags Liker ({size(tagsLike)})
+            Like ({size(tagsLike)})
           </SubGiantTitle>
           <SubGiantTitle>
-            Tags Disliker ({size(tagsDislike)})
+            Dislike ({size(tagsDislike)})
           </SubGiantTitle>
         </ContainerRight>
         <ContainerRight>
           <DataTableAlone
             data={tagsLike}
-            columns={tagcolumns}
-            loading={get(user, 'loading', false)} />
+            columns={likeColumns}
+            loading={get(tagsLike, 'loading', false)} />
           <DataTableAlone
             data={tagsDislike}
-            columns={tagcolumns}
-            loading={get(user, 'loading', false)} />
-        </ContainerRight>
-        <ContainerRight>
-          <SubGiantTitle>
-            Historique des Hébergements proposés ({size(housings)})
-          </SubGiantTitle>
-          <SubGiantTitle>
-            Historique des Activités proposés ({size(activities)})
-          </SubGiantTitle>
-        </ContainerRight>
-        <ContainerRight>
-          <DataTableAlone
-            data={housings}
-            columns={locationColumns}
-            loading={get(user, 'loading', false)} />
-          <DataTableAlone
-            data={activities}
-            columns={activityColumns}
-            loading={get(user, 'loading', false)} />
+            columns={likeColumns}
+            loading={get(tagsDislike, 'loading', false)} />
         </ContainerRight>
       </ContainerRow>
     </MainContainer>

@@ -23,6 +23,19 @@ const ActionButton = styled(Button)`
   margin: 0 8px;
 `
 
+const ContainerRight = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 24px;
+  justify-content: space-around;
+`
+
+const SubGiantTitle = styled.h2`
+  font-size: 30px;
+  color: ${({ theme }) => get(theme, 'primary', '#FFF')};
+  padding: 15px;
+`
+
 const ActionBar = () => {
   const navigate = useNavigate()
 
@@ -66,9 +79,19 @@ const Tags = () => {
       </Link>
     )
   }, {
+    id: 'type',
     Header: 'Type',
     accessor: 'type'
   }, {
+    id: 'numberLike',
+    Header: 'Nombres de Like',
+    accessor: 'numberLike'
+  }, {
+    id: 'numberDislike',
+    Header: 'Nombres de Dislike',
+    accessor: 'numberDislike'
+  }, {
+    id: 'suppression',
     Header: 'Suppression',
     accessor: 'id',
     // eslint-disable-next-line
@@ -86,13 +109,24 @@ const Tags = () => {
   }], [])
 
   return (
-    <ListTemplate
-      context='TAGS'
-      actionBar={ActionBar}
-      columns={columns}
-      type='tagsPage'
-      specialName='tags'
-    />
+    <>
+      <ListTemplate
+        context='TAGS'
+        actionBar={ActionBar}
+        columns={columns}
+        type='tagsPage'
+        specialName='tags'
+      />
+      <ContainerRight>
+        <SubGiantTitle>
+          Top 5 des Types les plus likés
+        </SubGiantTitle>
+        <SubGiantTitle>
+          Top 5 des Types les plus Dislikés
+        </SubGiantTitle>
+      </ContainerRight>
+
+    </>
   )
 }
 
