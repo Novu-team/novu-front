@@ -5,7 +5,9 @@ import { useMemo } from 'react'
 import Link from '../../atoms/Link'
 import Center from '../../atoms/Center'
 import ListTemplate from '../../templates/ListTemplate'
+import Button from '../../atoms/Button'
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 
 const TableCell = styled.td`
   height: 45px;
@@ -14,6 +16,32 @@ const TableCell = styled.td`
   font-size: 15px;
   text-align: ${({ left }) => left ? 'left' : 'center'};
 `
+
+const ActionContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+const ActionButton = styled(Button)`
+  margin: 0 8px;
+`
+
+const ActionBar = () => {
+  const navigate = useNavigate()
+
+  return (
+    <ActionContainer>
+      <ActionButton
+        color='white'
+        onClick={() => {
+          navigate('/createAdmin')
+        }}
+        background='primary'>
+        Crée un administrateur
+      </ActionButton>
+    </ActionContainer>
+  )
+}
 
 const Users = () => {
   const columns = useMemo(() => [{
@@ -69,7 +97,7 @@ const Users = () => {
   return (
     <ListTemplate
       context='USERS'
-      actionBar={() => {}}
+      actionBar={ActionBar}
       columns={columns}
       type='users' />
   )

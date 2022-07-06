@@ -17,7 +17,7 @@ const createInstance = (dispatch) => {
   instance.interceptors.response.use(response => response, error => {
     const { status } = error.response
 
-    if (isEqual(status, get(StatusCodes, 'FORBIDDEN'))) {
+    if (isEqual(status, get(StatusCodes, 'FORBIDDEN')) || isEqual(status, get(StatusCodes, 'UNAUTHORIZED'))) {
       dispatch(logoutUser())
     }
 

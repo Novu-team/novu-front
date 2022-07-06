@@ -23,6 +23,7 @@ import ResetPasswordPage from '../components/templates/ResetPasswordPage'
 import User from '../components/templates/User'
 import CreateTag from '../components/templates/CreateTag'
 import Tag from '../components/templates/Tag'
+import CreateAdmin from '../components/templates/CreateAdmin'
 
 const Container = styled.div`
   padding-top: calc(40px + 16px + 9px);
@@ -52,6 +53,7 @@ const AppRouter = () => {
             <Route path='tags/:id' element={<Tag />} />
             <Route path='users/:id' element={<User />} />
             <Route path='createTag' element={<CreateTag />} />
+            <Route path='createAdmin' element={<CreateAdmin />} />
           </Route>
         </Routes>
       </Container>
