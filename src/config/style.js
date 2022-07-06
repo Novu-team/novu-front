@@ -26,8 +26,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: Helvetica;
     font-weight: lighter;
     height: 100%;
-    background-image: linear-gradient(#FCFDFF, #F3F7FF);
-    background-repeat: no-repeat;
+    background-color: #F3F7FFFF;
+    background-repeat: repeat;
     color: ${get(theme, 'grey', '#000')};
   }
 `

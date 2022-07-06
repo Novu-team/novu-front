@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { get, isEqual } from 'lodash'
 import { useMemo } from 'react'
 
@@ -8,6 +8,7 @@ import ListTemplate from '../../templates/ListTemplate'
 import Button from '../../atoms/Button'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
+import RoundButton from '../../atoms/RoundButton'
 
 const TableCell = styled.td`
   height: 45px;
@@ -44,6 +45,16 @@ const ActionBar = () => {
 }
 
 const Users = () => {
+  const deleteUser = useCallback(async (id) => {
+    try {
+      await instance.delete(`/api/users/${id}`, {
+        headers: { 'AUTHORIZATION': `Bearer ${token}` }
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  })
+
   const columns = useMemo(() => [{
     id: 'name',
     Header: 'Nom',
@@ -92,6 +103,21 @@ const Users = () => {
         </Center>
       )
     }
+  }, {
+    Header: 'Suppression',
+    accessor: 'userId',
+    // eslint-disable-next-line
+    Cell: ({ value, row }) => (
+      <Center>
+        <RoundButton
+          color='white'
+          onClick={() => {
+            return deleteUser(`${value}`)
+          }}
+          background={'primary'}
+          iconName='trash-alt'/>
+      </Center>
+    )
   }], [])
 
   return (

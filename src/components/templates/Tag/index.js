@@ -135,10 +135,10 @@ const TagPage = () => {
       <ContainerRow>
         <ContainerRight>
           <SubGiantTitle>
-            Like ({size(tagsLike)})
+            J&apos;aime ({size(tagsLike)})
           </SubGiantTitle>
           <SubGiantTitle>
-            Dislike ({size(tagsDislike)})
+            Je n&apos;aime pas ({size(tagsDislike)})
           </SubGiantTitle>
         </ContainerRight>
         <ContainerRight>

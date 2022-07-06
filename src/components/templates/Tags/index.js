@@ -165,7 +165,7 @@ const Tags = () => {
   },
     {
     id: 'numberLike',
-    Header: 'Nombre(s) de like',
+    Header: 'Nombre(s) de j\'aime',
     accessor: 'numberLike'
   }], [])
 
@@ -182,7 +182,7 @@ const Tags = () => {
   },
     {
     id: 'numberLike',
-    Header: 'Nombre(s) de dislike',
+    Header: 'Nombre(s) de j\'aime pas',
     accessor: 'numberDislike'
   }], [])
 
@@ -193,7 +193,7 @@ const Tags = () => {
   },
     {
       id: 'numberLike',
-      Header: 'Nombre(s) de dislike',
+      Header: 'Nombre(s) de j\'aime',
       accessor: 'numberDislike'
     }], [])
 
@@ -204,7 +204,7 @@ const Tags = () => {
   },
     {
       id: 'numberLike',
-      Header: 'Nombre(s) de like',
+      Header: 'Nombre(s) de j\'aime pas',
       accessor: 'numberLike'
     }], [])
 
@@ -224,10 +224,10 @@ const Tags = () => {
         ) : <>
         <ContainerRight>
           <SubGiantTitle>
-            Top 5 des Tags les plus likés
+            Tags les plus aimé
           </SubGiantTitle>
           <SubGiantTitle>
-            Top 5 des Tags les plus Dislikés
+            Tags les moins aimé
           </SubGiantTitle>
         </ContainerRight>
         <ContainerRight>
@@ -242,10 +242,10 @@ const Tags = () => {
         </ContainerRight>
         <ContainerRight>
           <SubGiantTitle>
-            Top 5 des Type de tag les plus likés
+            Catégorie le plus aimé
           </SubGiantTitle>
           <SubGiantTitle>
-            Top 5 des Type de tag les plus Dislikés
+            Catégorie le moins aimé
           </SubGiantTitle>
         </ContainerRight>
         <ContainerRight>
