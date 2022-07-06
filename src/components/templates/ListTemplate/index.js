@@ -37,7 +37,7 @@ const ContainerRow = styled.div`
   margin-bottom: 16px;
 `
 
-const ListTemplate = ({ context, actionBar: ActionBar, columns, type, fields, specialName }) => {
+const ListTemplate = ({ context, actionBar: ActionBar, columns, type, specialName }) => {
   const token = useSelector(userToken)
   const location = useLocation()
 

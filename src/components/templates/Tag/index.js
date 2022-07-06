@@ -84,9 +84,6 @@ const TagPage = () => {
           }
         }, { isLike: [], isDislike: [] })
 
-        console.log(isLike)
-        console.log(isDislike)
-
         setTag(tag)
         setTagsLike(isLike)
         setTagsDislike(isDislike)

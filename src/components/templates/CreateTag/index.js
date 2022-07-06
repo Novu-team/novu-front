@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { get } from 'lodash'
+import { get, startCase, camelCase } from 'lodash'
 import { useFormik } from 'formik'
 
 import Form from '../../atoms/Form'
@@ -80,8 +80,8 @@ const CreateTag = () => {
 
   const createTag = async (name, type) => {
     await instance.put(`/api/tag`, {
-      name,
-      type,
+      name: startCase(camelCase(name)),
+      type: startCase(camelCase(type)),
     }, { headers: { 'AUTHORIZATION': `Bearer ${token}` } })
   }
 
