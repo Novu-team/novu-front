@@ -178,10 +178,10 @@ const UserPage = () => {
         </ContainerRight>
         <ContainerRight>
           <SubGiantTitle>
-            Tags Liker ({size(tagsLike)})
+            Tags aimé ({size(tagsLike)})
           </SubGiantTitle>
           <SubGiantTitle>
-            Tags Disliker ({size(tagsDislike)})
+            Tags pas aimé ({size(tagsDislike)})
           </SubGiantTitle>
         </ContainerRight>
         <ContainerRight>
