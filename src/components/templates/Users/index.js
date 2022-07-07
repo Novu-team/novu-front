@@ -225,8 +225,6 @@ const Users = () => {
         return null
       }
 
-      console.log(value)
-
       return (
         <Center>
           <RoundButton
