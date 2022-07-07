@@ -1,18 +1,38 @@
-import { get } from 'lodash'
-import { createSlice, createAction, createAsyncThunk } from '@reduxjs/toolkit'
+import { get, indexOf, isEqual } from 'lodash'
+import jwt_decode from 'jwt-decode'
+import { createAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import createAxiosInstance from '../../utils/http'
 
-export const loginUser = createAsyncThunk('authentication/loginUser', async ({ email, password }, { rejectWithValue }) => {
+export const loginUser = createAsyncThunk('authentication/loginUser', async ({
+  email,
+  password
+}, { rejectWithValue }) => {
   try {
     const instance = createAxiosInstance()
     const { data } = await instance.post('/api/login', {
       email,
       password
     })
+    const token = get(data, 'access_token')
+
+    const decodedToken = jwt_decode(token)
+
+    const roles = get(decodedToken, 'roles')
+
+    const isAdmin = !isEqual(indexOf(roles, 'ADMIN'), -1)
+
+    if (!isAdmin) {
+      throw ({
+        response: {
+          status: 401,
+          data: 'Vous n\'êtes pas un administrateur'
+        }
+      })
+    }
 
     return {
-      token: get(data, 'access_token')
+      token
     }
   } catch (error) {
     console.log({ error })
