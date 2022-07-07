@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from 'react'
-import { get, isEqual } from 'lodash'
+import { get, isEqual, size } from 'lodash'
 
 import Link from '../../atoms/Link'
 import Center from '../../atoms/Center'
@@ -32,11 +32,11 @@ const ActionBar = () => {
   return (
     <ActionContainer>
       <ActionButton
-        color="white"
+        color='white'
         onClick={() => {
           navigate('/createAdmin')
         }}
-        background="primary">
+        background='primary'>
         Créer un administrateur
       </ActionButton>
     </ActionContainer>
@@ -46,7 +46,7 @@ const ActionBar = () => {
 const Users = () => {
   const deleteUser = useCallback(async (id) => {
     try {
-      await instance.delete(`/api/users/${id}`, {
+      await instance.delete(`/api/users/${id}/delete`, {
         headers: { 'AUTHORIZATION': `Bearer ${token}` }
       })
     } catch (err) {
@@ -57,22 +57,93 @@ const Users = () => {
   const columns = useMemo(() => [{
     id: 'name',
     Header: 'Nom',
-    accessor: ({ name, first_name }) => `${name} ${first_name}`,
+    accessor: ({ name, first_name }) => `${first_name} ${name}`,
     // eslint-disable-next-line react/prop-types
-    Cell: ({ value, row }) => (
-      <Link to={`/users/${get(row, 'original.userId')}`}>
-        {value}
-      </Link>
-    )
+    Cell: ({ value, row }) => {
+      if (isEqual(value, ' ')) {
+        return (
+          <>
+            Compte supprimé
+          </>
+        )
+      }
+
+      return (
+        <Link to={`/users/${get(row, 'original.userId')}`}>
+          {value}
+        </Link>
+      )
+    }
   }, {
+    id: 'email',
     Header: 'Email',
-    accessor: 'email'
+    accessor: 'email',
+    // eslint-disable-next-line
+    Cell: ({ value, row }) => {
+      if (value) {
+        return (
+          <Center>
+            <TableCell>
+              {value}
+            </TableCell>
+          </Center>
+        )
+      }
+
+      return (
+        <Center>
+          <TableCell>
+            indisponible
+          </TableCell>
+        </Center>
+      )
+    }
   }, {
     Header: 'Téléphone',
-    accessor: 'phone_number'
+    accessor: 'phone_number',
+    // eslint-disable-next-line
+    Cell: ({ value, _ }) => {
+      if (value) {
+        return (
+          <Center>
+            <TableCell>
+              {value}
+            </TableCell>
+          </Center>
+        )
+      }
+
+      return (
+        <Center>
+          <TableCell>
+            indisponible
+          </TableCell>
+        </Center>
+      )
+    }
   }, {
     Header: 'Trigramme',
-    accessor: 'trigram'
+    accessor: 'trigram',
+    // eslint-disable-next-line
+    Cell: ({ value, _ }) => {
+      if (value) {
+        return (
+          <Center>
+            <TableCell>
+              {value}
+            </TableCell>
+          </Center>
+        )
+      }
+
+      return (
+        <Center>
+          <TableCell>
+            indisponible
+          </TableCell>
+        </Center>
+      )
+    }
   }, {
     Header: 'Sexe',
     accessor: 'sex',
@@ -103,20 +174,46 @@ const Users = () => {
       )
     }
   }, {
+    id: 'admin',
+    Header: 'Admin',
+    accessor: 'admin',
+    // eslint-disable-next-line
+    Cell: ({ value, row }) => {
+      if (isEqual(value, 'false')) {
+        return <Center>
+          <TableCell>
+            Non
+          </TableCell>
+        </Center>
+      }
+
+      return <Center>
+        <TableCell>
+          Oui
+        </TableCell>
+      </Center>
+    }
+  }, {
     Header: 'Suppression',
     accessor: 'userId',
     // eslint-disable-next-line
-    Cell: ({ value, row }) => (
-      <Center>
-        <RoundButton
-          color='white'
-          onClick={() => {
-            return deleteUser(`${value}`)
-          }}
-          background={'primary'}
-          iconName='trash-alt'/>
-      </Center>
-    )
+    Cell: ({ value, row }) => {
+      if (isEqual(get(row, 'original.email', ''), '')) {
+        return null
+      }
+
+      return (
+        <Center>
+          <RoundButton
+            color='white'
+            onClick={() => {
+              return deleteUser(`${value}`)
+            }}
+            background={'primary'}
+            iconName='trash-alt'/>
+        </Center>
+      )
+    }
   }], [])
 
   return (

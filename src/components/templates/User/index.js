@@ -4,9 +4,10 @@ import createAxiosInstance from '../../../utils/http'
 import { useSelector } from 'react-redux'
 import userToken from '../../../redux/selectors/userToken'
 import styled from 'styled-components'
-import { get, isEqual, size } from 'lodash'
+import { get, isEmpty, isEqual, reduce, size, truncate } from 'lodash'
 import DataTableAlone from '../../organisms/DataTableAlone'
 import Loading from '../../atoms/Loading'
+import Center from '../../atoms/Center'
 
 const Container = styled.div`
   padding: 16px;
@@ -51,9 +52,13 @@ const SubGiantTitle = styled.h2`
   padding: 15px;
 `
 
+const StyledLocation = styled.a`
+`
+
 const UserPage = () => {
   const [user, setUser] = useState({})
-  const [groups, setGroups] = useState([])
+  const [groupsInactif, setGroupsInactif] = useState([])
+  const [groupsActif, setGroupsActif] = useState([])
   const [housings, setHousing] = useState([])
   const [tagsLike, setTagsLike] = useState([])
   const [activities, setActivities] = useState([])
@@ -79,8 +84,32 @@ const UserPage = () => {
         const tagsLike = get(user, 'likeTags')
         const tagsDislike = get(user, 'dislikeTags')
 
+        const { groupsActif, groupsInactif } = reduce(groups, (acc, group) => {
+          const now = new Date().toLocaleDateString('fr-FR')
+          const startDate = new Date(get(group, 'startDate')).toLocaleDateString('fr-FR')
+          const endDate = new Date(get(group, 'endDate')).toLocaleDateString('fr-FR')
+          const defaultDate = new Date(null).toLocaleDateString('fr-FR')
+
+          if (isEqual(defaultDate, startDate) || isEqual(defaultDate, endDate)) {
+            return {
+              ...acc, groupsActif: [...get(acc, 'groupsActif', []), group]
+            }
+          }
+
+          if (endDate < now) {
+            return {
+              ...acc, groupsInactif: [...get(acc, 'groupsInactif', []), group]
+            }
+          }
+
+          return {
+            ...acc, groupsActif: [...get(acc, 'groupsActif', []), group]
+          }
+        }, { groupsActif: [], groupsInactif: [] })
+
         setUser(user)
-        setGroups(groups)
+        setGroupsActif(groupsActif)
+        setGroupsInactif(groupsInactif)
         setHousing(housings)
         setTagsLike(tagsLike)
         setActivities(activities)
@@ -109,7 +138,7 @@ const UserPage = () => {
     accessor: 'codeToJoin'
   }], [])
 
-  const tagcolumns = useMemo(() => [{
+  const tagColumns = useMemo(() => [{
     id: 'name',
     Header: 'Nom',
     accessor: 'name'
@@ -124,12 +153,26 @@ const UserPage = () => {
     accessor: 'name'
   }, {
     id: 'url',
-    Header: 'Lien vers la location',
-    accessor: 'url'
-  }, {
-    id: 'available',
-    Header: 'Disponible',
-    accessor: ({ available }) => `${isEqual(available, true) ? 'disponible' : 'indisponible'}`
+    Header: 'Lien',
+    accessor: 'url',
+    // eslint-disable-next-line
+    Cell: ({ value, row }) => {
+      if (isEmpty(value)) {
+        return (
+          <Center>
+            non renseigné
+          </Center>
+        )
+      }
+
+      return (
+      <StyledLocation href={`${value}`}>
+        {truncate(value, {
+          'length': 20,
+          'omission': '...'
+        })}
+      </StyledLocation>
+    )}
   }, {
     id: 'description',
     Header: 'Description',
@@ -147,7 +190,7 @@ const UserPage = () => {
   }, {
     id: 'dateTime',
     Header: 'Date de début',
-    accessor: 'dateTime'
+    accessor: 'dateTime',
   }], [])
 
   if (loading) {
@@ -166,12 +209,19 @@ const UserPage = () => {
       <ContainerRow>
         <ContainerRight>
           <SubGiantTitle>
-            Evénements actifs ({size(groups)})
+            Evénements actifs ({size(groupsActif)})
+          </SubGiantTitle>
+          <SubGiantTitle>
+            Evénements inactifs ({size(groupsInactif)})
           </SubGiantTitle>
         </ContainerRight>
         <ContainerRight>
           <DataTableAlone
-            data={groups}
+            data={groupsActif}
+            columns={columnsGroup}
+            loading={get(user, 'loading', false)} />
+          <DataTableAlone
+            data={groupsInactif}
             columns={columnsGroup}
             loading={get(user, 'loading', false)} />
         </ContainerRight>
@@ -186,11 +236,11 @@ const UserPage = () => {
         <ContainerRight>
           <DataTableAlone
             data={tagsLike}
-            columns={tagcolumns}
+            columns={tagColumns}
             loading={get(user, 'loading', false)} />
           <DataTableAlone
             data={tagsDislike}
-            columns={tagcolumns}
+            columns={tagColumns}
             loading={get(user, 'loading', false)} />
         </ContainerRight>
         <ContainerRight>

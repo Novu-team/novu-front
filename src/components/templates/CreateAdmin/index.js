@@ -122,7 +122,7 @@ const CreateAdmin = () => {
       confirmPassword: '',
       firstname: '',
       phoneNumber: '',
-      trigram: 'AAA',
+      trigram: 'ADm',
       name: '',
       birthday: '2022-06-05',
       admin: true
