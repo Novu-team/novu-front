@@ -77,16 +77,6 @@ const Tags = () => {
   const token = useSelector(userToken)
   const [loading, setLoading] = useState(true)
 
-  const deleteTag = useCallback(async (id) => {
-    try {
-      await instance.delete(`/api/tags/${id}`, {
-        headers: { 'AUTHORIZATION': `Bearer ${token}` }
-      })
-    } catch (err) {
-      console.log(err)
-    }
-  })
-
   useEffect(() => {
     try {
       const getTagsRanking = async () => {
@@ -132,22 +122,6 @@ const Tags = () => {
     id: 'numberDislike',
     Header: 'Nombre de j\'aime pas',
     accessor: 'numberDislike'
-  }, {
-    id: 'suppression',
-    Header: 'Suppression',
-    accessor: 'id',
-    // eslint-disable-next-line
-    Cell: ({ value, row }) => (
-      <Center>
-        <RoundButton
-          color='white'
-          onClick={() => {
-            return deleteTag(`${value}`)
-          }}
-          background={'primary'}
-          iconName='trash-alt'/>
-      </Center>
-    )
   }], [])
 
   const mostLikeColumns = useMemo(() => [{

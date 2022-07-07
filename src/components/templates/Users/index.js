@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { get, isEqual, size } from 'lodash'
 
 import Link from '../../atoms/Link'
@@ -8,6 +8,11 @@ import Button from '../../atoms/Button'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 import RoundButton from '../../atoms/RoundButton'
+import createAxiosInstance from '../../../utils/http'
+import { useSelector } from 'react-redux'
+import userToken from '../../../redux/selectors/userToken'
+import { TOAST_PROPERTIES } from '../../molecules/Toast/toastProperties'
+import Toast from '../../molecules/Toast/Toast'
 
 const TableCell = styled.td`
   height: 45px;
@@ -44,11 +49,29 @@ const ActionBar = () => {
 }
 
 const Users = () => {
+  const navigate = useNavigate()
+  const instance = createAxiosInstance()
+  const token = useSelector(userToken)
+  const [toasts, setList] = useState([])
+
+  const showToast = ({ type, description, titleToast }) => {
+    const toastProperties = TOAST_PROPERTIES.find((toast) => toast.title.toLowerCase() === type);
+
+    setList([...toasts, { ...toastProperties, description, titleToast }]);
+  }
+
   const deleteUser = useCallback(async (id) => {
     try {
       await instance.delete(`/api/users/${id}/delete`, {
         headers: { 'AUTHORIZATION': `Bearer ${token}` }
       })
+
+      showToast({ type: 'success',
+        titleToast: 'Success',
+        description: 'Creation du compte réussie'
+      })
+
+      return setTimeout(() => navigate('/users'), 1000)
     } catch (err) {
       console.log(err)
     }
@@ -202,6 +225,8 @@ const Users = () => {
         return null
       }
 
+      console.log(value)
+
       return (
         <Center>
           <RoundButton
@@ -217,11 +242,14 @@ const Users = () => {
   }], [])
 
   return (
-    <ListTemplate
-      context='USERS'
-      actionBar={ActionBar}
-      columns={columns}
-      type='users' />
+    <>
+      <Toast toastList={toasts} position={'top-right'} />
+      <ListTemplate
+        context='USERS'
+        actionBar={ActionBar}
+        columns={columns}
+        type='users' />
+    </>
   )
 }
 
