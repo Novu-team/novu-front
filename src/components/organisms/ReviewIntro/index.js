@@ -22,7 +22,7 @@ const SubGiantTitle = styled.p`
   font-size: 75px;
   color: white;
   padding-bottom: 20px;
-  
+
   ${media.lessThan('sm')`
      text-align: center;
   `}
@@ -50,12 +50,12 @@ const DATA = [{
   author: '@JeremyTernisien'
 }, {
   title: 'Facilité d\'utilisation',
-  descriptions: 'Moi qui ne suit pas adepte des applications mobiles, Novu ne m\'a posé aucun problème d\'utilisation ! Merci Novu',
+  descriptions: 'Moi qui ne suis pas adepte des applications mobiles, Novu ne m\'a posé aucun problème d\'utilisation ! Merci Novu',
   icon: QuotationIcon,
   author: '@JamesBertho'
 }, {
   title: 'Rapidité d\'organisation',
-  descriptions: 'Réserver nos voyages était un cauchemar, et maintenant grâce à Novu, c\'est un parti de plaisir et un gain de temps !',
+  descriptions: 'Réserver nos voyages était un cauchemar, et maintenant grâce à Novu c\'est une partie de plaisir et un gain de temps !',
   icon: QuotationIcon,
   author: '@LucasPothier'
 }]

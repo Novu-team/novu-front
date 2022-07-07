@@ -43,7 +43,7 @@ const CGUIntro = () => {
     <FooterDiv>
       <ButtonToCGU onClick={goToCGU}>
         <TextStyled>
-          conditions generales d&apos;utilisation
+          Conditions générales d&apos;utilisation
         </TextStyled>
       </ButtonToCGU>
       <ButtonToCGU onClick={goToPolitiqueConfidentialite}>

@@ -1,13 +1,12 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import createAxiosInstance from '../../../utils/http'
 import { useSelector } from 'react-redux'
 import userToken from '../../../redux/selectors/userToken'
 import styled from 'styled-components'
-import { get, isEqual, reduce, size } from 'lodash'
+import { get, isEqual, size } from 'lodash'
 import DataTableAlone from '../../organisms/DataTableAlone'
 import Loading from '../../atoms/Loading'
-
 
 const Container = styled.div`
   padding: 16px;
@@ -68,7 +67,7 @@ const UserPage = () => {
   useEffect(() => {
     try {
       const getUserFullInfo = async (userId) => {
-        const { data }  = await instance.get(`/api/user/${userId}`, {
+        const { data } = await instance.get(`/api/user/${userId}`, {
           headers: { 'AUTHORIZATION': `Bearer ${token}` }
         })
 
@@ -102,11 +101,11 @@ const UserPage = () => {
     accessor: 'name'
   }, {
     id: 'participantNumber',
-    Header: 'Nombre de Participants',
-    accessor: ({ participants }) => `${size(participants)}`,
+    Header: 'Nombre de participants',
+    accessor: ({ participants }) => `${size(participants)}`
   }, {
     id: 'codeToJoin',
-    Header: 'Code d invitation',
+    Header: 'Code d\'invitation',
     accessor: 'codeToJoin'
   }], [])
 
@@ -130,7 +129,7 @@ const UserPage = () => {
   }, {
     id: 'available',
     Header: 'Disponible',
-    accessor: ({ available }) => `${isEqual(available, true) ? 'disponible' : 'indisponible'}`,
+    accessor: ({ available }) => `${isEqual(available, true) ? 'disponible' : 'indisponible'}`
   }, {
     id: 'description',
     Header: 'Description',
@@ -167,7 +166,7 @@ const UserPage = () => {
       <ContainerRow>
         <ContainerRight>
           <SubGiantTitle>
-            Events Actif ({size(groups)})
+            Evénements actifs ({size(groups)})
           </SubGiantTitle>
         </ContainerRight>
         <ContainerRight>
@@ -178,10 +177,10 @@ const UserPage = () => {
         </ContainerRight>
         <ContainerRight>
           <SubGiantTitle>
-            Tags aimé ({size(tagsLike)})
+            Tags aimés ({size(tagsLike)})
           </SubGiantTitle>
           <SubGiantTitle>
-            Tags pas aimé ({size(tagsDislike)})
+            Tags pas aimés ({size(tagsDislike)})
           </SubGiantTitle>
         </ContainerRight>
         <ContainerRight>
@@ -196,10 +195,10 @@ const UserPage = () => {
         </ContainerRight>
         <ContainerRight>
           <SubGiantTitle>
-            Historique des Hébergements proposés ({size(housings)})
+            Historique des hébergements proposés ({size(housings)})
           </SubGiantTitle>
           <SubGiantTitle>
-            Historique des Activités proposés ({size(activities)})
+            Historique des activités proposées ({size(activities)})
           </SubGiantTitle>
         </ContainerRight>
         <ContainerRight>
@@ -216,6 +215,5 @@ const UserPage = () => {
     </MainContainer>
   )
 }
-
 
 export default UserPage

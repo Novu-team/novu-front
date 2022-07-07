@@ -9,7 +9,7 @@ const GiantTitle = styled.h1`
   color: white;
   font-size: 200px;
   font-weight: 600;
-  
+
   ${media.lessThan('sm')`
      width: 100%;
      font-size: 150px;
@@ -53,8 +53,8 @@ const VisualModelIntro = styled.div`
 
 const TextContainerIntro = styled.div`
   width: 60%;
-  
-  
+
+
   ${media.lessThan('sm')`
      text-align: center;
      width: 100%;
@@ -67,7 +67,7 @@ const BackgroundNovuIntro = styled.div`
   background-size: cover;
   display: flex;
 
-  
+
   ${media.lessThan('sm')`
      flex-direction: column;
   `}
@@ -80,22 +80,24 @@ const ExplanationNovuIntro = () => {
         <GiantTitle>Novu</GiantTitle>
         <SubGiantTitle>C est Quoi ?</SubGiantTitle>
         <TextExplanation>
-          <BoldText>Novu</BoldText> c’est l’appli collaborative qui regroupe toutes les étapes de l’organisation de ton voyage, <BoldText>au même endroit.</BoldText>
+          <BoldText>Novu</BoldText> c’est l’appli collaborative qui regroupe toutes les étapes de l’organisation de ton
+          voyage, <BoldText>au même endroit.</BoldText>
         </TextExplanation>
         <TextExplanation>
-          Logement, date de ton séjour, activités, affaires à mettre dans ta valises… toutes les infos y sont.
-          <br/>Le groupe valide ensemble chaque étape du séjour, et toi tu gardes un oeil sur tes vacances.
+          Logement, date de ton séjour, activités, affaires à mettre dans ta valise… toutes les infos y sont.
+          <br />Le groupe valide ensemble chaque étape du séjour, et toi tu gardes un oeil sur tes vacances.
         </TextExplanation>
         <TextExplanation>
           Tu aimes prendre les choses en main ?
-          <br/>Tu peux facilement soumettre au groupe tes envies, valider le programme, relancer les retardataires.
+          <br />Tu peux facilement soumettre au groupe tes envies, valider le programme, relancer les retardataires.
         </TextExplanation>
         <TextExplanation>
           Tu préfères te laisser porter ?
-          <br/>Donne tes réponses au groupe en 3 clics, tu n’auras plus qu’à profiter sur place.
+          <br />Donne tes réponses au groupe en 3 clics, tu n’auras plus qu’à profiter sur place.
         </TextExplanation>
         <TextExplanation>
-          Pour chaque vacances en famille, weekend entre amis, sortie entre collègues, tu crées ton event sur Novu et tu te laisses guider.
+          Pour chaque vacance en famille, weekend entre amis, sortie entre collègues, tu crées ton event sur Novu et tu
+          te laisses guider.
           <BoldText> Avec Novu, les vacances tous ensemble, c’est uniquement du plaisir.</BoldText>
         </TextExplanation>
       </TextContainerIntro>

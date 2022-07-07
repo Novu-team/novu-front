@@ -1,6 +1,5 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { get, isEqual } from 'lodash'
-import { useMemo } from 'react'
 
 import Link from '../../atoms/Link'
 import Center from '../../atoms/Center'
@@ -33,12 +32,12 @@ const ActionBar = () => {
   return (
     <ActionContainer>
       <ActionButton
-        color='white'
+        color="white"
         onClick={() => {
           navigate('/createAdmin')
         }}
-        background='primary'>
-        Crée un administrateur
+        background="primary">
+        Créer un administrateur
       </ActionButton>
     </ActionContainer>
   )
@@ -69,7 +68,7 @@ const Users = () => {
     Header: 'Email',
     accessor: 'email'
   }, {
-    Header: 'Telephone',
+    Header: 'Téléphone',
     accessor: 'phone_number'
   }, {
     Header: 'Trigramme',

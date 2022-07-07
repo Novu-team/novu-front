@@ -44,10 +44,17 @@ const CGUPage = () => {
         Description sommaire du produit
       </SubGiantTitle>
       <TextContent>
-        NOVU c’est un outil collaboratif, qui regroupe toutes les étapes de l’organisation de ton événement (voyage, week-end, séminaire, soirée…), au même endroit. Logement, date de ton séjour, activités, affaires à mettre dans tes valises… toutes les infos y sont. Le groupe valide ensemble chaque étape de l’événement, et toi tu gardes un œil sur tes vacances. Tu aimes prendre les choses en main ? Tu peux facilement soumettre au groupe tes envies, valider le programme, relancer les retardataires.Tu préfères te laisser porter ? Donne tes réponses au groupe en 3 clics, tu n’auras plus qu’à profiter sur place. Pour chaque vacances en famille, weekend entre amis, sortie entre collègues, tu crées ton événement sur NOVU et tu te laisses guider.
+        NOVU c’est un outil collaboratif, qui regroupe toutes les étapes de l’organisation de ton événement (voyage,
+        week-end, séminaire, soirée…), au même endroit. Logement, date de ton séjour, activités, affaires à mettre dans
+        tes valises… toutes les infos y sont. Le groupe valide ensemble chaque étape de l’événement, et toi tu gardes un
+        œil sur tes vacances. Tu aimes prendre les choses en main ? Tu peux facilement soumettre au groupe tes envies,
+        valider le programme, relancer les retardataires.Tu préfères te laisser porter ? Donne tes réponses au groupe en
+        3 clics, tu n’auras plus qu’à profiter sur place. Pour chaque vacance en famille, weekend entre amis, sortie
+        entre collègues, tu crées ton événement sur NOVU et tu te laisses guider.
       </TextContent>
       <TextContent>
-        NOVU est accessible en ligne sur le site internet www.novu-app.com mais également via des applications mobiles. Les événements peuvent être partagés entre amis via un lien de partage.
+        NOVU est accessible en ligne sur le site internet www.novu-app.com mais également via des applications mobiles.
+        Les événements peuvent être partagés entre amis via un lien de partage.
       </TextContent>
       <SubGiantTitle>
         Conseils d'utilisation pour un fonctionnement optimal de l'outil

@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
 import Center from '../../atoms/Center'
 import RoundButton from '../../atoms/RoundButton'
@@ -14,7 +13,6 @@ import Link from '../../atoms/Link'
 import { get } from 'lodash'
 import DataTableAlone from '../../organisms/DataTableAlone'
 import Loading from '../../atoms/Loading'
-
 
 const ActionContainer = styled.div`
   display: flex;
@@ -58,12 +56,12 @@ const ActionBar = () => {
   return (
     <ActionContainer>
       <ActionButton
-        color='white'
+        color="white"
         onClick={() => {
           navigate('/createTag')
         }}
-        background='primary'>
-        Crée un tag
+        background="primary">
+        Créer un tag
       </ActionButton>
     </ActionContainer>
   )
@@ -128,11 +126,11 @@ const Tags = () => {
     accessor: 'type'
   }, {
     id: 'numberLike',
-    Header: 'Nombre(s) de Like',
+    Header: 'Nombre de j\'aime',
     accessor: 'numberLike'
   }, {
     id: 'numberDislike',
-    Header: 'Nombre(s) de Dislike',
+    Header: 'Nombre de j\'aime pas',
     accessor: 'numberDislike'
   }, {
     id: 'suppression',
@@ -164,10 +162,10 @@ const Tags = () => {
     )
   },
     {
-    id: 'numberLike',
-    Header: 'Nombre(s) de j\'aime',
-    accessor: 'numberLike'
-  }], [])
+      id: 'numberLike',
+      Header: 'Nombre de j\'aime',
+      accessor: 'numberLike'
+    }], [])
 
   const mostDislikeColumns = useMemo(() => [{
     id: 'name',
@@ -181,10 +179,10 @@ const Tags = () => {
     )
   },
     {
-    id: 'numberLike',
-    Header: 'Nombre(s) de j\'aime pas',
-    accessor: 'numberDislike'
-  }], [])
+      id: 'numberLike',
+      Header: 'Nombre de j\'aime pas',
+      accessor: 'numberDislike'
+    }], [])
 
   const mostTypeDislikeColumns = useMemo(() => [{
     id: 'name',
@@ -193,7 +191,7 @@ const Tags = () => {
   },
     {
       id: 'numberLike',
-      Header: 'Nombre(s) de j\'aime',
+      Header: 'Nombre de j\'aime',
       accessor: 'numberDislike'
     }], [])
 
@@ -204,7 +202,7 @@ const Tags = () => {
   },
     {
       id: 'numberLike',
-      Header: 'Nombre(s) de j\'aime pas',
+      Header: 'Nombre de j\'aime pas',
       accessor: 'numberLike'
     }], [])
 
@@ -242,10 +240,10 @@ const Tags = () => {
         </ContainerRight>
         <ContainerRight>
           <SubGiantTitle>
-            Catégorie le plus aimé
+            Catégorie la plus aimée
           </SubGiantTitle>
           <SubGiantTitle>
-            Catégorie le moins aimé
+            Catégorie la moins aimée
           </SubGiantTitle>
         </ContainerRight>
         <ContainerRight>

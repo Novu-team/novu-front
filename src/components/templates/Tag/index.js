@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 
 import { useParams } from 'react-router-dom'
 import createAxiosInstance from '../../../utils/http'
@@ -9,7 +9,6 @@ import { get, isEqual, reduce, size } from 'lodash'
 import DataTableAlone from '../../organisms/DataTableAlone'
 import Loading from '../../atoms/Loading'
 import Link from '../../atoms/Link'
-
 
 const Container = styled.div`
   padding: 16px;
@@ -99,24 +98,25 @@ const TagPage = () => {
 
   const likeColumns = useMemo(() => [{
     id: 'user',
-    Header: 'Name',
+    Header: 'Nom',
     accessor: 'user.name',
     // eslint-disable-next-line
     Cell: ({ value, row }) => {
       console.log(row)
       return (
-      <Link to={`/users/${get(row, 'original.user.userId.value')}`}>
-        {value}
-      </Link>
-    )}
+        <Link to={`/users/${get(row, 'original.user.userId.value')}`}>
+          {value}
+        </Link>
+      )
+    }
   }, {
     id: 'numberLike',
-    Header: 'Nombre de tags aimé',
-    accessor: ({ user }) => `${size(get(user, 'likeTags', []))}`,
+    Header: 'Nombre de tags aimés',
+    accessor: ({ user }) => `${size(get(user, 'likeTags', []))}`
   }, {
     id: 'numberDisLike',
-    Header: 'Nombre de tags pas aimé',
-    accessor: ({ user }) => `${size(get(user, 'dislikeTags', []))}`,
+    Header: 'Nombre de tags pas aimés',
+    accessor: ({ user }) => `${size(get(user, 'dislikeTags', []))}`
   }], [])
 
   if (loading) {
