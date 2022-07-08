@@ -95,7 +95,7 @@ const ContactPage = () => {
         </ProfilContainer>
 
       </ContactContainer>
-      <LinkContactEmail>lorepipsum@novu-app.com</LinkContactEmail>
+      <LinkContactEmail>support@novu-app.com</LinkContactEmail>
       <GCUIntro />
     </>
   )
